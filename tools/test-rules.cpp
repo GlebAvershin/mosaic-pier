@@ -54,6 +54,7 @@ int main() {
   int lost = 0;
   for (int ch = 0; ch < mp_count(); ch++) {
     mp_start(ch);
+    if (ch == 5) assert(mp_moves() == 22 && mp_left() == 13);
     assert(!mp_swap(-1, 0) && !mp_swap(5, 6) && !mp_swap(0, 35));
     while (mp_status() == 0) {
       int p = mp_hint();

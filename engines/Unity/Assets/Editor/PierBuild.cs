@@ -19,6 +19,8 @@ public static class PierBuild {
       else
         Rules.mp_start(ch);
       int movesAtStart = Rules.mp_moves();
+      if (!master && ch == 5 && movesAtStart != 22)
+        throw new Exception("Final chapter must start with the validated 22-move budget");
       while (Rules.mp_status() == 0) {
         int p = Rules.mp_hint();
         if (p < 0 || Rules.mp_swap(p / 36, p % 36) == 0)
@@ -36,7 +38,7 @@ public static class PierBuild {
     Verify();
     PlayerSettings.companyName = "Gleb Avershin";
     PlayerSettings.productName = "Mosaic Pier";
-    PlayerSettings.bundleVersion = "1.1.0";
+    PlayerSettings.bundleVersion = "1.1.1";
     PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone,
                                             "games.glebavershin.mosaicpier");
     PlayerSettings.fullScreenMode = FullScreenMode.Windowed;

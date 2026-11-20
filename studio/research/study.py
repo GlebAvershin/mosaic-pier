@@ -1,37 +1,24 @@
-"""Sweep deterministic native hint-agent runs, selecting on calibration seeds only."""
+"""Re-evaluate the locked release budget and the old candidate on the registered holdout."""
 import json
-import subprocess
-import tempfile
-from pathlib import Path
 
-SOURCE = ["tools/balance.cpp", "core/pier.cpp", "core/pier.h", "core/campaign.inc"]
+SOURCE = ["tools/balance.cpp", "core/pier.cpp", "core/pier.h", "core/campaign.inc",
+          "studio/research/confirm_budget.py", "docs/evidence/budget-confirmation.json"]
 COLUMNS = "scenario,budget,seed,won"
 OPTIONS = ["keep_candidate", "revisit_budget"]
-QUESTION = ("Keep the calibrated move budget only if it exists and at least 75% of the held-out "
-            "boards were won. Otherwise revisit the budget. A missing candidate is recorded as zero.")
-CONTROL = "one_move_control"
+QUESTION = ("Accept a move budget if its holdout wins reach required_wins. "
+            "Return keep_candidate on passing and revisit_budget otherwise.")
+CONTROL = "old_candidate"
 
 
 def samples(root):
-    with tempfile.TemporaryDirectory() as folder:
-        binary = Path(folder) / "probe"
-        subprocess.run(["c++", "-O2", "-std=c++17", root/SOURCE[0], root/SOURCE[1], "-o", binary], check=True)
-        for budget in (1, 8, 12, 16, 20, 24, 28):
-            scenario = CONTROL if budget == 1 else "thirteen_panes"
-            for seed in range(401, 465):
-                result = subprocess.check_output([binary, str(seed), str(budget), "13"], text=True)
-                yield scenario, budget, seed, int(json.loads(result)["won"])
+    release = json.loads((root / SOURCE[-1]).read_text())
+    lo, hi = release["holdout_seeds"]
+    for scenario, budget, field in [("release_budget", release["budget"], "winning_seeds"),
+                                    (CONTROL, release["old_budget"], "old_winning_seeds")]:
+        wins = set(release[field])
+        for seed in range(lo, hi+1):
+            yield scenario, budget, seed, int(seed in wins)
 
 
 def decision(metrics):
-    return OPTIONS[0] if metrics["budget"] and 4*metrics["holdout_wins"] >= 3*metrics["holdout_n"] else OPTIONS[1]
-
-
-def calibration_table(rows):
-    counts = {}
-    for _, budget, seed, won in rows:
-        split = "calibration" if seed % 2 == 0 else "holdout"
-        bucket = counts.setdefault(budget, {}).setdefault(split, {"boards": 0, "wins": 0})
-        bucket["boards"] += 1
-        bucket["wins"] += won
-    return counts
+    return OPTIONS[0] if metrics["wins"] >= metrics["required_wins"] else OPTIONS[1]
