@@ -1,0 +1,71 @@
+{
+  "game": "Mosaic Pier",
+  "client": "Codex app-server",
+  "amplitude": {
+    "tool": "query_amplitude_data",
+    "chart": {
+      "kind": "segmentation",
+      "events": [
+        {
+          "event": "game.study_evaluated",
+          "where": [
+            {
+              "property": "game",
+              "op": "is",
+              "values": [
+                "Mosaic Pier"
+              ],
+              "scope": "event"
+            }
+          ]
+        }
+      ],
+      "measured_as": {
+        "as": "event_totals"
+      },
+      "date_range": {
+        "start": 1795132800,
+        "end": 1795219199,
+        "timezone": "UTC"
+      }
+    },
+    "event_total": 4,
+    "request_id": "req_1795211861703_vwhkot16v"
+  },
+  "sentry": {
+    "tool": "get_issue_details",
+    "event_id": "a5cb9530b4cb5d598bf42422c217def5",
+    "issue": "PYTHON-F",
+    "title": "Mosaic Pier research check: old_candidate / revisit_budget",
+    "matches_research_receipt": true
+  },
+  "databricks": {
+    "service": "system.ai.dbsql",
+    "tool": "execute_sql",
+    "statement_id": "01f1e52d-bd85-1216-8ab5-e1830610816c",
+    "columns": [
+      "scenario",
+      "budget",
+      "wins",
+      "boards",
+      "required_wins"
+    ],
+    "rows": [
+      [
+        "old_candidate",
+        "12",
+        "160",
+        "256",
+        "206"
+      ],
+      [
+        "release_budget",
+        "22",
+        "231",
+        "256",
+        "206"
+      ]
+    ],
+    "sqlite_match": true
+  }
+}
