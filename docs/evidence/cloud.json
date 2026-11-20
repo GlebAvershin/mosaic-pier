@@ -1,6 +1,49 @@
 {
-  "run": "https://github.com/GlebAvershin/mosaic-pier/actions/runs/44777655756",
-  "revision": "2474b0d60001579d7065ae390f948740670e089e",
+  "run": "https://github.com/GlebAvershin/mosaic-pier/actions/runs/44779607964",
+  "revision": "3bbbf2b5aacc989861d98b2b00df4206e9942698",
+  "pr-review": {
+    "github": {
+      "commit": "7c5be01620519dc43c3d9a22ec1488dc4bd7a1bb",
+      "pull_request": "https://github.com/GlebAvershin/mosaic-pier/pull/1",
+      "head": "3bbbf2b5aacc989861d98b2b00df4206e9942698",
+      "file": "studio/agent_review.py",
+      "source": "\"\"\"MCP bridge from release engineering to the playable C++ board.\"\"\"\nimport json\nimport os\nfrom pathlib import Path\nimport subprocess\nfrom typing import Any\nfrom mcp.server.fastmcp import FastMCP\n\nserver = FastMCP(\"Mosaic Pier level workshop\")\nCANDIDATES = {\"kingfisher\": 900, \"pelican\": 901, \"sandpiper\": 902}\nMOVES, PANES = 14, 13\n\n\ndef simulate(seed):\n    default = Path(__file__).resolve().parents[1] / \"build\" / \"balance\"\n    result = subprocess.run([os.environ.get(\"ATLAS_ORACLE\") or str(default),\n                             str(seed), str(MOVES), str(PANES)],\n                            capture_output=True, text=True, check=True, timeout=5)\n    return json.loads(result.stdout)\n\n\n@server.resource(\"studio://review/brief\")\ndef brief() -> dict:\n    return {\"instruction\": \"Choose a solvable finale with 2 to 5 moves left, at least two line sweeps and a cascade depth of at least three under the hint policy.\",\n            \"options\": {name: simulate(seed) for name, seed in CANDIDATES.items()}}\n\n\n@server.resource(\"studio://review/negative-control\")\ndef negative_control() -> str:\n    return \"sandpiper\"\n\n\n@server.tool(structured_output=True)\ndef verify_choice(choice: str) -> dict[str, Any]:\n    if choice not in CANDIDATES:\n        return {\"accepted\": False, \"reason\": \"Unknown candidate\"}\n    seed = CANDIDATES[choice]\n    result = simulate(seed)\n    return {\"accepted\": bool(result[\"won\"] and 2 <= result[\"spare\"] <= 5\n                             and result[\"sweeps\"] >= 2 and result[\"cascade\"] >= 3),\n            \"seed\": seed, \"moves\": MOVES, \"panes\": PANES, \"replay\": result}\n\n\nif __name__ == \"__main__\":\n    server.run()\n"
+    },
+    "diagnostics": {
+      "destination": "local SDK receiver",
+      "sentry_envelopes": [
+        {
+          "message": "mosaic: verifier rejected sandpiper",
+          "level": "info",
+          "release": "7c5be01620519dc43c3d9a22ec1488dc4bd7a1bb"
+        }
+      ],
+      "amplitude_events": [
+        {
+          "event": "game.review_accepted",
+          "properties": {
+            "choice": "kingfisher",
+            "model": "qwen",
+            "project": "mosaic",
+            "tokens": 219
+          }
+        },
+        {
+          "event": "game.review_accepted",
+          "properties": {
+            "choice": "kingfisher",
+            "model": "smol",
+            "project": "mosaic",
+            "tokens": 822
+          }
+        }
+      ]
+    },
+    "model": "qwen",
+    "suggestion": "One specific missing edge-case test for the Python game verifier could be:\n\n1. **Invalid Move Count**: The game verifier does not check if the move count is valid. It only checks if the move count is at least 2 and up to 5. However, the move count should be between 2 and 5, inclusive. Therefore, a test could be:\n\n```python\ndef simulate(seed):\n    default = Path(__file__).resolve().parents[1] / \"build\" / \"balance\"\n    result = subprocess.run([os.environ.get(\"ATLAS_ORACLE\") or str(default), str(seed), str(MOVES), str(PANES)], capture_output=True, text=True, check=True, timeout=5)\n    return json.loads(result.stdout)\n```\n\nThis test",
+    "tokens": 814,
+    "finish_reason": "length"
+  },
   "requests": {
     "project": "mosaic",
     "unauthorized_status": 401,
@@ -28,8 +71,8 @@
       },
       "tokens": 1041,
       "model_calls": 4,
-      "p50_ms": 2147.635,
-      "p95_ms": 2190.01,
+      "p50_ms": 3764.5600000000004,
+      "p95_ms": 4993.89,
       "responses": [
         {
           "result": {
@@ -58,8 +101,8 @@
           "cache": "miss",
           "inference_tokens": 219,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 2186.87
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 2531.21
         },
         {
           "result": {
@@ -88,8 +131,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 2189.66
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 2540.84
         },
         {
           "result": {
@@ -152,8 +195,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 2107.9
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 4992.37
         },
         {
           "result": {
@@ -216,8 +259,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 2100.59
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 4989.21
         },
         {
           "result": {
@@ -246,8 +289,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 2190.01
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 2535.38
         },
         {
           "result": {
@@ -276,8 +319,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 2189.43
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 2543.81
         },
         {
           "result": {
@@ -340,8 +383,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 2108.4
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 4993.89
         },
         {
           "result": {
@@ -404,8 +447,8 @@
           "cache": "miss",
           "inference_tokens": 822,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 2091.11
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 4985.31
         }
       ]
     },
@@ -415,8 +458,8 @@
       },
       "tokens": 0,
       "model_calls": 0,
-      "p50_ms": 26.515,
-      "p95_ms": 30.51,
+      "p50_ms": 43.980000000000004,
+      "p95_ms": 49.12,
       "responses": [
         {
           "result": {
@@ -445,8 +488,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 30.09
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 36.8
         },
         {
           "result": {
@@ -475,8 +518,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 21.98
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 41.66
         },
         {
           "result": {
@@ -539,8 +582,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 30.43
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 43.87
         },
         {
           "result": {
@@ -603,8 +646,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 23.73
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 47.73
         },
         {
           "result": {
@@ -633,8 +676,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 26.72
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 45.75
         },
         {
           "result": {
@@ -663,8 +706,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 24.41
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 44.09
         },
         {
           "result": {
@@ -727,8 +770,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-dcx2t",
-          "client_ms": 30.51
+          "worker": "game-review-5d68c4557b-96d2c",
+          "client_ms": 49.12
         },
         {
           "result": {
@@ -791,8 +834,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-5d68c4557b-fh4cd",
-          "client_ms": 26.31
+          "worker": "game-review-5d68c4557b-gg7tv",
+          "client_ms": 43.28
         }
       ]
     },
@@ -823,8 +866,8 @@
       "cache": "miss",
       "inference_tokens": 219,
       "model": "qwen",
-      "worker": "game-review-5d68c4557b-fh4cd",
-      "client_ms": 308.74
+      "worker": "game-review-5d68c4557b-gg7tv",
+      "client_ms": 381.31
     }
   },
   "restored": {
@@ -853,8 +896,8 @@
       },
       "tokens": 0,
       "model_calls": 0,
-      "p50_ms": 29.27,
-      "p95_ms": 33.52,
+      "p50_ms": 47.8,
+      "p95_ms": 53.85,
       "responses": [
         {
           "result": {
@@ -883,8 +926,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-7bd9b86464-2xf56",
-          "client_ms": 18.51
+          "worker": "game-review-5f49c6f6d-bgn5n",
+          "client_ms": 43.74
         },
         {
           "result": {
@@ -913,8 +956,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-7bd9b86464-h7tls",
-          "client_ms": 29.21
+          "worker": "game-review-5f49c6f6d-wk2pk",
+          "client_ms": 47.93
         },
         {
           "result": {
@@ -977,8 +1020,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-7bd9b86464-2xf56",
-          "client_ms": 33.52
+          "worker": "game-review-5f49c6f6d-bgn5n",
+          "client_ms": 51.97
         },
         {
           "result": {
@@ -1041,8 +1084,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-7bd9b86464-h7tls",
-          "client_ms": 25.99
+          "worker": "game-review-5f49c6f6d-wk2pk",
+          "client_ms": 41.14
         },
         {
           "result": {
@@ -1071,8 +1114,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-7bd9b86464-2xf56",
-          "client_ms": 31.95
+          "worker": "game-review-5f49c6f6d-bgn5n",
+          "client_ms": 53.85
         },
         {
           "result": {
@@ -1101,8 +1144,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "qwen",
-          "worker": "game-review-7bd9b86464-h7tls",
-          "client_ms": 26.85
+          "worker": "game-review-5f49c6f6d-wk2pk",
+          "client_ms": 50.42
         },
         {
           "result": {
@@ -1165,8 +1208,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-7bd9b86464-2xf56",
-          "client_ms": 31.88
+          "worker": "game-review-5f49c6f6d-bgn5n",
+          "client_ms": 47.67
         },
         {
           "result": {
@@ -1229,8 +1272,8 @@
           "cache": "hit",
           "inference_tokens": 0,
           "model": "smol",
-          "worker": "game-review-7bd9b86464-h7tls",
-          "client_ms": 29.33
+          "worker": "game-review-5f49c6f6d-wk2pk",
+          "client_ms": 43.72
         }
       ]
     },
@@ -1261,8 +1304,38 @@
       "cache": "hit",
       "inference_tokens": 0,
       "model": "qwen",
-      "worker": "game-review-7bd9b86464-h7tls",
-      "client_ms": 7.05
+      "worker": "game-review-5f49c6f6d-wk2pk",
+      "client_ms": 10.89
     }
+  },
+  "sdk": {
+    "destination": "local SDK receiver",
+    "sentry_envelopes": [
+      {
+        "message": "mosaic: verifier rejected sandpiper",
+        "level": "info",
+        "release": "7c5be01620519dc43c3d9a22ec1488dc4bd7a1bb"
+      }
+    ],
+    "amplitude_events": [
+      {
+        "event": "game.review_accepted",
+        "properties": {
+          "choice": "kingfisher",
+          "model": "qwen",
+          "project": "mosaic",
+          "tokens": 219
+        }
+      },
+      {
+        "event": "game.review_accepted",
+        "properties": {
+          "choice": "kingfisher",
+          "model": "smol",
+          "project": "mosaic",
+          "tokens": 822
+        }
+      }
+    ]
   }
 }

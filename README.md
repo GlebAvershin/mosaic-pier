@@ -1,0 +1,39 @@
+# Mosaic Pier
+
+A seaside glasshouse has lost its colour. Swap pieces of stained glass, clear the frost and restore six sections of the pier, from the tide steps to the kingfisher at the top of the cupola.
+
+**[Play in your browser](https://glebavershin.github.io/mosaic-pier/)** · [Download for macOS](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.0.0) · [Watch a playthrough](docs/evidence/playthrough.mp4) · [Технологии и результаты](docs/TECHNOLOGIES.md)
+
+![The first chapter of Mosaic Pier with the glasshouse and the playable board](docs/evidence/workshop.jpg)
+
+## Playing
+
+Swap two neighbouring pieces by tapping each piece or swiping. Match three over a striped pane to clear it. Four or more in a row or column sweep the entire line. Each chapter has a move budget. Illegal swaps are free. The hint previews a legal move. In the browser, arrow keys move focus and Space selects a piece. In the Unity player, H highlights a pair and sets the keyboard cursor on its first piece. The browser and Unity save progress on the device.
+
+## Inside the game
+
+| Component | What you can inspect |
+| --- | --- |
+| [C++17 rules](core/pier.cpp) | A seeded 6×6 board, horizontal and vertical matches, simultaneous clears, cascades, dead-board recovery and one-move lookahead. All clients use the same six level contracts. |
+| [Browser client](web) | The C++ rules compiled to WebAssembly, responsive controls, reduced motion, synthesized glass chimes and move-history replay. [Mobile screenshot](docs/evidence/mobile.jpg) |
+| [Unity project](engines/Unity) | Unity 2022.3.62f1, C# presentation, coroutine animation and a native C++ plug-in. The universal macOS player passed all six chapters. [Player screenshot](docs/evidence/unity-player.jpg) · [Player replay](docs/evidence/unity-player.csv) |
+| [Unreal Engine project](engines/Unreal) | UE 5.5 C++ game module, game mode, Canvas HUD, hit boxes, staged textures and an automation test. Delivered as source. Editor compilation and playtesting are pending. |
+| [AI level workshop](studio/agent_review.py) | The model chooses between measured candidates, then an MCP tool reruns the game simulation. Codex and Gemini selected the finale shipped in the campaign. [Codex](docs/evidence/codex.json) · [Gemini](docs/evidence/gemini.json) |
+| [AI layout review](studio/layout_review.py) | Chromium measured three layouts at six viewport sizes. Qwen selected the board-first mobile layout and the verifier checked the interaction targets. [Decision](docs/evidence/layout.json) |
+| [Cloud CI](.github/workflows/workshop.yml) | Two Kubernetes replicas, two llama.cpp model routes, FastAPI and a shared PostgreSQL cache. The free-standing CI run also captured a PR review and local Sentry and Amplitude SDK events. [Measured run](docs/evidence/cloud.json) |
+
+## Running from source
+
+**Web.** Run `python3 -m http.server 8000 --directory web` from the repository root, then open `http://localhost:8000`. The checked-in WebAssembly runs without a model server. To rebuild it, set `WASM_CXX` to the absolute path to WASI SDK 25's `clang++` and run `tools/build-web.sh`. CI compares the rebuilt file with the release version.
+
+**Unity.** Open `engines/Unity` in Unity 2022.3.62f1, open `Assets/Scenes/Pier.unity` and press Play. The macOS plug-in is included. On Linux run `tools/unity-plugin.sh` first. For a standalone macOS build, set `MOSAIC_BUILD` to an absolute output path ending in `.app` and call the editor with `-batchmode -nographics -quit -projectPath <absolute Unity project directory> -executeMethod PierBuild.Mac`.
+
+**Unreal.** Keep the checkout intact so Unreal Build Tool can find the shared `core` directory. Open `engines/Unreal/MosaicPier.uproject` with UE 5.5 and build the MosaicPierEditor target. Play uses the engine's Entry map and the game's native HUD. The Automation window exposes `MosaicPier.Gameplay.Campaign`.
+
+**Verification.** Run `tools/check.sh` with a C++17 compiler, the address and undefined-behaviour sanitizers, and Node.js. For browser input tests, install Playwright for Python and its Chromium browser, start the local web server and run `python tools/playtest.py http://localhost:8000 --out build/browser-report`. A standalone Unity replay can be run without changing player progress.
+
+```sh
+"build/macos/Mosaic Pier.app/Contents/MacOS/Mosaic Pier" -mosaic-replay "$PWD/build/unity-replay"
+```
+
+The glasshouse illustration was generated for this project. The five silhouettes and their facets are rendered by the [original sprite generator](tools/glass.py). The web edition uses Cormorant Garamond under its [SIL Open Font License](web/assets/OFL.txt).

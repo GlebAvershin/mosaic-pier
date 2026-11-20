@@ -1,0 +1,3 @@
+MOSAIC_NATIVE_REPLAY_OK
+Build Finished, Result: Success.
+Exiting batchmode successfully now!
