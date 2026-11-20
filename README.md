@@ -28,6 +28,8 @@ Swap two neighbouring pieces by tapping each piece or swiping. Match three over 
 
 **Unity.** Open `engines/Unity` in Unity 2022.3.62f1, open `Assets/Scenes/Pier.unity` and press Play. The macOS plug-in is included. On Linux run `tools/unity-plugin.sh` first. For a standalone macOS build, set `MOSAIC_BUILD` to an absolute output path ending in `.app` and call the editor with `-batchmode -nographics -quit -projectPath <absolute Unity project directory> -executeMethod PierBuild.Mac`.
 
+**Unity editor MCP.** On macOS with Unity CLI 1.0.0 on `PATH` and editor 6000.6.10f1 installed, run `studio/unity/start-workshop.sh`. It opens an isolated copy with Unity Pipeline 1.0.1. Pass the printed project path to `uv run --script studio/unity/replay.py "<workshop path>"` to replay six chapters in the editor and compare each result with the released player. Close that copy with `unity close "<workshop path>"`. [Recorded MCP response](docs/evidence/unity-mcp.json)
+
 **Unreal.** Keep the checkout intact so Unreal Build Tool can find the shared `core` directory. Open `engines/Unreal/MosaicPier.uproject` with UE 5.5 and build the MosaicPierEditor target. Play uses the engine's Entry map and the game's native HUD. The Automation window exposes `MosaicPier.Gameplay.Campaign`.
 
 **Verification.** Run `tools/check.sh` with a C++17 compiler, the address and undefined-behaviour sanitizers, and Node.js. For browser input tests, install Playwright for Python and its Chromium browser, start the local web server and run `python tools/playtest.py http://localhost:8000 --out build/browser-report`. A standalone Unity replay can be run without changing player progress.
