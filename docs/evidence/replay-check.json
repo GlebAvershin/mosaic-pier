@@ -1,0 +1,20 @@
+{
+  "game": "Mosaic Pier",
+  "query_sha256": "17ddba2b3aa1d9247f074a94ae2c92cfe36eb860a9b46aac94b4672f1d891e5a",
+  "research_cases": 2,
+  "research_receipts": 4,
+  "provider_bindings": {
+    "bedrock-mantle": {
+      "model": "qwen.qwen3-coder-30b-a3b-instruct",
+      "trace_sha256": "5ad2b4ccd11e792c3ec17aed9f5fa6086dff36dfa55c4a77300246fb7dd8b7a7",
+      "accepted_regions": 3,
+      "rejected_control_regions": 3
+    },
+    "databricks": {
+      "model": "databricks-qwen3-next-80b-a3b-instruct",
+      "trace_sha256": "95fba7cafbe814ab87d46b0370590ef8a1752ca1629df6bc273b06367dfc328e",
+      "accepted_regions": 3,
+      "rejected_control_regions": 3
+    }
+  }
+}
