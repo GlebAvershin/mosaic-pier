@@ -1,0 +1,37 @@
+{
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "baseline_sha256": "eea26518e52bc23cc7e5ac218764808220cc34ba8087f1533672c24b314973f6",
+  "features_sha256": "91f2c0b73da6db3daf27cc10de43cfaef90db37e0c2afcdc05480b0c45620dd1",
+  "cases": [
+    {
+      "scenario": "one_move_control",
+      "facts": {
+        "calibrated_budget": null,
+        "validation_win_percent": null,
+        "validation_threshold_percent": 75
+      },
+      "rule": "revisit_budget",
+      "model_answer": "revisit_budget",
+      "strict_before": false,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 100
+    },
+    {
+      "scenario": "thirteen_panes",
+      "facts": {
+        "calibrated_budget": 12,
+        "validation_win_percent": 62.5,
+        "validation_threshold_percent": 75
+      },
+      "rule": "revisit_budget",
+      "model_answer": "revisit_budget",
+      "strict_before": false,
+      "strict_after": true,
+      "first_line_before": false,
+      "first_line_after": true,
+      "tokens": 106
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "game": "Mosaic Pier",
+  "revision": "a596742e7890c4c78f2d2da23c7bc92c915409cf",
+  "source_sha256": {
+    "tools/balance.cpp": "dca204f8675679ce68f5985e45231d5cf7d9cab53e6c23b185259c26f9255196",
+    "core/pier.cpp": "acd5be0839636f8b4b3806c01d6adc1ed864222fa6146c53038768d4788e08ea",
+    "core/pier.h": "a6c038ae736c67506922482164ab00c00c0fe4abca4222c09b7c6decf5a20189",
+    "core/campaign.inc": "28c87a6db8fe953b4b4900c15a507f965cc0170f9b44963a6874dcb13cf78d44",
+    "studio/research/study.py": "dc6de63a67b1f50acfbb188411f0108da7eca27d657582ce23da6d09b5968fc9",
+    "studio/research/metrics.sql": "8442ecb8e290929c7e425c041c609cd4a7e156cdc6156fd76f220fd83cf1fbdc"
+  },
+  "query_sha256": "62073d90a65adb3c970dc1530a26b9e07ee8ec9f76b681ea1542e9644540e47b",
+  "input_rows": 448,
+  "cases": [
+    {
+      "scenario": "one_move_control",
+      "metrics": {
+        "budget": 0,
+        "train_wins": 0,
+        "train_n": 0,
+        "holdout_wins": 0,
+        "holdout_n": 0
+      },
+      "rule": "revisit_budget",
+      "model_answer": "revisit_budget\n\nThe budget is 0, which means there's no calibrated move budget to keep. Since the budget doesn't exist, we don't need to check the win rate condition. The absence of a candidate budget triggers the revisit_budget action.",
+      "agreement": false,
+      "tokens": 156,
+      "receipts": [
+        {
+          "service": "amplitude",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "7dfcb39a6a315736a7f4a28427d64c80",
+          "timestamp_utc": "2026-11-20T20:05:10.475465+00:00"
+        },
+        {
+          "service": "sentry",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "947a952c1d74591ba15d8b206c8340db",
+          "timestamp_utc": "2026-11-20T20:05:11.201689+00:00"
+        }
+      ]
+    },
+    {
+      "scenario": "thirteen_panes",
+      "metrics": {
+        "budget": 12,
+        "train_wins": 26,
+        "train_n": 32,
+        "holdout_wins": 20,
+        "holdout_n": 32
+      },
+      "rule": "revisit_budget",
+      "model_answer": "keep_candidate\n\nThe calibrated move budget exists (it's 12) and the holdout win rate is 20/32 = 62.5%, which is at least 75% of the held-out boards were won (since 20/32 = 0.62",
+      "agreement": false,
+      "tokens": 173,
+      "receipts": [
+        {
+          "service": "amplitude",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "9701bfd7fdf1550fb678b14fd814ac40",
+          "timestamp_utc": "2026-11-20T20:05:12.377089+00:00"
+        },
+        {
+          "service": "sentry",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "d3ac55231c07507bb5969f17ef3d4a35",
+          "timestamp_utc": "2026-11-20T20:05:12.594915+00:00"
+        }
+      ]
+    }
+  ],
+  "budget_sweep": {
+    "1": {
+      "holdout": {
+        "boards": 32,
+        "wins": 0
+      },
+      "calibration": {
+        "boards": 32,
+        "wins": 0
+      }
+    },
+    "8": {
+      "holdout": {
+        "boards": 32,
+        "wins": 10
+      },
+      "calibration": {
+        "boards": 32,
+        "wins": 18
+      }
+    },
+    "12": {
+      "holdout": {
+        "boards": 32,
+        "wins": 20
+      },
+      "calibration": {
+        "boards": 32,
+        "wins": 26
+      }
+    },
+    "16": {
+      "holdout": {
+        "boards": 32,
+        "wins": 24
+      },
+      "calibration": {
+        "boards": 32,
+        "wins": 29
+      }
+    },
+    "20": {
+      "holdout": {
+        "boards": 32,
+        "wins": 28
+      },
+      "calibration": {
+        "boards": 32,
+        "wins": 29
+      }
+    },
+    "24": {
+      "holdout": {
+        "boards": 32,
+        "wins": 30
+      },
+      "calibration": {
+        "boards": 32,
+        "wins": 32
+      }
+    },
+    "28": {
+      "holdout": {
+        "boards": 32,
+        "wins": 30
+      },
+      "calibration": {
+        "boards": 32,
+        "wins": 32
+      }
+    }
+  },
+  "databricks": "SQL Statement Execution / SQLite parity",
+  "aws_plan": "FREE / ACTIVE",
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "region": "eu-north-1",
+  "utc": "2026-11-20T20:05:09.064129+00:00"
+}
