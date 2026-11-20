@@ -1,5 +1,8 @@
 name: Level workshop
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ["studio/**", "core/**", ".github/workflows/workshop.yml"]
 permissions:
   contents: read
 jobs:

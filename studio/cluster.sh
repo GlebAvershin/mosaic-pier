@@ -82,3 +82,7 @@ after=json.loads((p/'restored.json').read_text())
 workers=lambda phase: {r['worker'] for r in phase['responses']}
 assert workers(before['fresh']).isdisjoint(workers(after['restored']))
 PY
+# Review the actual GitHub event and adapter through the platform's MCP resources.
+export GAME_CHECKOUT="$game" ADAPTER=studio/agent_review.py
+uv run --project "$platform/studio" --locked --with amplitude-analytics==1.3.0 --with sentry-sdk==2.75.0 \
+  python "$platform/studio/agents/release_review.py" --out "$out" --model-url "http://$bridge:18181"
