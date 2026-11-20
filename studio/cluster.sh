@@ -45,7 +45,12 @@ for route in qwen:18181 smol:18182; do
   pids+=($!)
   curl -fsS --retry 30 --retry-all-errors --retry-delay 1 "http://$bridge:$port/health"
 done
-server=/studio/game/agent_review.py
+case "$STUDIO_PROJECT" in
+  mosaic) adapter=agent_review.py ;;
+  mosaic-layout) adapter=layout_review.py ;;
+  *) exit 2 ;;
+esac
+server="/studio/game/$adapter"
 python=/studio/platform/.venv/bin/python
 kubectl create secret generic review-config \
   --from-literal=STUDIO_PROJECT="$STUDIO_PROJECT" --from-literal=STUDIO_TOKENS="$STUDIO_TOKENS" \
@@ -83,6 +88,6 @@ workers=lambda phase: {r['worker'] for r in phase['responses']}
 assert workers(before['fresh']).isdisjoint(workers(after['restored']))
 PY
 # Review the actual GitHub event and adapter through the platform's MCP resources.
-export GAME_CHECKOUT="$game" ADAPTER=studio/agent_review.py
+export GAME_CHECKOUT="$game" ADAPTER="studio/$adapter"
 uv run --project "$platform/studio" --locked --with amplitude-analytics==1.3.0 --with sentry-sdk==2.75.0 \
   python "$platform/studio/agents/release_review.py" --out "$out" --model-url "http://$bridge:18181"

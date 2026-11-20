@@ -36,4 +36,16 @@ Swap two neighbouring pieces by tapping each piece or swiping. Match three over 
 "build/macos/Mosaic Pier.app/Contents/MacOS/Mosaic Pier" -mosaic-replay "$PWD/build/unity-replay"
 ```
 
+## Replaying an AI decision
+
+Run `tools/check.sh` first to build the native level simulator. The account CLI adapter and cloud gateway are shared with Lantern Atlas. To reproduce the subscription review from the game root, use the platform revision pinned in CI and a signed-in Gemini or Codex CLI.
+
+```sh
+git clone https://github.com/GlebAvershin/lantern-atlas build/platform
+git -C build/platform checkout a4c8bef02f7d9e035c4a23a116f9ad8e13eaa03b
+uv run --project build/platform/studio --locked python studio/account_review.py build/platform gemini
+```
+
+Substitute `codex` for the final argument to use the Codex CLI. For the responsive layout decision, `tools/layout-probe.py` measures candidates against the running browser game. The [Level workshop workflow](.github/workflows/workshop.yml) runs both MCP adapters on GitHub-hosted Kubernetes clusters with Qwen and SmolLM2. Each cluster is removed after its measurements are attached.
+
 The glasshouse illustration was generated for this project. The five silhouettes and their facets are rendered by the [original sprite generator](tools/glass.py). The web edition uses Cormorant Garamond under its [SIL Open Font License](web/assets/OFL.txt).

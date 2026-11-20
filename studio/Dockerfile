@@ -7,7 +7,7 @@ FROM python:3.12-slim-bookworm
 WORKDIR /studio
 COPY platform ./platform
 RUN pip install --no-cache-dir uv==0.13.6 && uv sync --project platform --locked --no-dev
-COPY game/agent_review.py ./game/agent_review.py
+COPY game/agent_review.py game/layout_review.py game/layout-metrics.json ./game/
 COPY --from=rules /balance /studio/oracle
 ENV ATLAS_ORACLE=/studio/oracle PYTHONDONTWRITEBYTECODE=1
 USER 65534:65534
