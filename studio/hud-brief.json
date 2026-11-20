@@ -1,0 +1,42 @@
+{
+  "project": "Mosaic Pier",
+  "screen": "Glass workshop",
+  "colors": [
+    "174648",
+    "f4c797"
+  ],
+  "art": "web/assets/kingfisher.jpg",
+  "design": {
+    "headline": "Lead with the remaining move budget.",
+    "stage": "Give the puzzle panes the largest region.",
+    "action": "Place the hint for the next swap within thumb reach."
+  },
+  "components": [
+    {
+      "id": "board",
+      "title": "Kingfisher window",
+      "description": "Study the panes in the stained glass puzzle.",
+      "source": "web/index.html",
+      "symbol": "id=\"board\""
+    },
+    {
+      "id": "hint",
+      "title": "Show hint",
+      "description": "Request a hint for the next swap.",
+      "source": "web/index.html",
+      "symbol": "id=\"hint\""
+    },
+    {
+      "id": "moves",
+      "title": "Moves left",
+      "description": "Check the remaining move budget.",
+      "source": "web/index.html",
+      "symbol": "id=\"moves\""
+    }
+  ],
+  "acceptance": {
+    "headline": "moves",
+    "stage": "board",
+    "action": "hint"
+  }
+}
