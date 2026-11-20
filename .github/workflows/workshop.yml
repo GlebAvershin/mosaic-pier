@@ -1,0 +1,21 @@
+name: Level workshop
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: GlebAvershin/lantern-atlas
+          ref: a4c8bef02f7d9e035c4a23a116f9ad8e13eaa03b
+          path: platform
+      - uses: astral-sh/setup-uv@v6
+      - run: studio/cluster.sh platform . mosaic docs/evidence/cloud
+      - uses: actions/upload-artifact@v4
+        with:
+          name: workshop-replays
+          path: docs/evidence/cloud
