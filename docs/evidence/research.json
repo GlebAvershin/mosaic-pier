@@ -1,153 +1,81 @@
 {
   "game": "Mosaic Pier",
-  "revision": "a596742e7890c4c78f2d2da23c7bc92c915409cf",
+  "revision": "fefd365588a70f76330e3a76715294f0b552f7b1",
   "source_sha256": {
     "tools/balance.cpp": "dca204f8675679ce68f5985e45231d5cf7d9cab53e6c23b185259c26f9255196",
     "core/pier.cpp": "acd5be0839636f8b4b3806c01d6adc1ed864222fa6146c53038768d4788e08ea",
     "core/pier.h": "a6c038ae736c67506922482164ab00c00c0fe4abca4222c09b7c6decf5a20189",
-    "core/campaign.inc": "28c87a6db8fe953b4b4900c15a507f965cc0170f9b44963a6874dcb13cf78d44",
-    "studio/research/study.py": "dc6de63a67b1f50acfbb188411f0108da7eca27d657582ce23da6d09b5968fc9",
-    "studio/research/metrics.sql": "8442ecb8e290929c7e425c041c609cd4a7e156cdc6156fd76f220fd83cf1fbdc"
+    "core/campaign.inc": "7d9134f4885c41c00275eb9f93b501296069171567e5a184c693414a36c91dc2",
+    "studio/research/confirm_budget.py": "13c2f70dfd997aaecd3b76bdd1be2313a7165f5315f09f23bf8364fe53050854",
+    "docs/evidence/budget-confirmation.json": "6cf8612a24b2a2052d184bb165c3011b16d09577f71d93e58fbb3963bc3d0057",
+    "studio/research/study.py": "ec0e137ca7ea04ba2ab3d6186a52c8a094732a50309f683898a1a0df0a6be606",
+    "studio/research/metrics.sql": "c467dbbd6bfcf4519c54beb721d65af4b969059a05340dbb8aabac633a44bf30"
   },
-  "query_sha256": "62073d90a65adb3c970dc1530a26b9e07ee8ec9f76b681ea1542e9644540e47b",
-  "input_rows": 448,
+  "query_sha256": "17ddba2b3aa1d9247f074a94ae2c92cfe36eb860a9b46aac94b4672f1d891e5a",
+  "input_rows": 512,
   "cases": [
     {
-      "scenario": "one_move_control",
+      "scenario": "old_candidate",
       "metrics": {
-        "budget": 0,
-        "train_wins": 0,
-        "train_n": 0,
-        "holdout_wins": 0,
-        "holdout_n": 0
+        "budget": 12,
+        "wins": 160,
+        "boards": 256,
+        "required_wins": 206
       },
       "rule": "revisit_budget",
-      "model_answer": "revisit_budget\n\nThe budget is 0, which means there's no calibrated move budget to keep. Since the budget doesn't exist, we don't need to check the win rate condition. The absence of a candidate budget triggers the revisit_budget action.",
+      "model_answer": "Looking at the measurements:\n- budget: 12\n- wins: 160\n- boards: 256\n- required_wins: 206\n\nThe condition is whether the holdout wins (wins = 160) reach the required_wins (206).",
       "agreement": false,
-      "tokens": 156,
+      "tokens": 150,
       "receipts": [
         {
           "service": "amplitude",
           "phase": "ingestion_acknowledged",
           "http_status": 200,
-          "event_id": "7dfcb39a6a315736a7f4a28427d64c80",
-          "timestamp_utc": "2026-11-20T20:05:10.475465+00:00"
+          "event_id": "bfd1420c356d517b8aa154ca9e5358cd",
+          "timestamp_utc": "2026-11-20T20:15:41.993144+00:00"
         },
         {
           "service": "sentry",
           "phase": "ingestion_acknowledged",
           "http_status": 200,
-          "event_id": "947a952c1d74591ba15d8b206c8340db",
-          "timestamp_utc": "2026-11-20T20:05:11.201689+00:00"
+          "event_id": "a5cb9530b4cb5d598bf42422c217def5",
+          "timestamp_utc": "2026-11-20T20:15:42.648540+00:00"
         }
       ]
     },
     {
-      "scenario": "thirteen_panes",
+      "scenario": "release_budget",
       "metrics": {
-        "budget": 12,
-        "train_wins": 26,
-        "train_n": 32,
-        "holdout_wins": 20,
-        "holdout_n": 32
+        "budget": 22,
+        "wins": 231,
+        "boards": 256,
+        "required_wins": 206
       },
-      "rule": "revisit_budget",
-      "model_answer": "keep_candidate\n\nThe calibrated move budget exists (it's 12) and the holdout win rate is 20/32 = 62.5%, which is at least 75% of the held-out boards were won (since 20/32 = 0.62",
+      "rule": "keep_candidate",
+      "model_answer": "keep_candidate\n\nThe holdout wins (231) exceed the required wins (206), so the move budget should be accepted.",
       "agreement": false,
-      "tokens": 173,
+      "tokens": 116,
       "receipts": [
         {
           "service": "amplitude",
           "phase": "ingestion_acknowledged",
           "http_status": 200,
-          "event_id": "9701bfd7fdf1550fb678b14fd814ac40",
-          "timestamp_utc": "2026-11-20T20:05:12.377089+00:00"
+          "event_id": "f749b3127a1754b393aadcb04203c2a2",
+          "timestamp_utc": "2026-11-20T20:15:43.617213+00:00"
         },
         {
           "service": "sentry",
           "phase": "ingestion_acknowledged",
           "http_status": 200,
-          "event_id": "d3ac55231c07507bb5969f17ef3d4a35",
-          "timestamp_utc": "2026-11-20T20:05:12.594915+00:00"
+          "event_id": "12cb5e6316c451958f283c9acfb09b05",
+          "timestamp_utc": "2026-11-20T20:15:43.822274+00:00"
         }
       ]
     }
   ],
-  "budget_sweep": {
-    "1": {
-      "holdout": {
-        "boards": 32,
-        "wins": 0
-      },
-      "calibration": {
-        "boards": 32,
-        "wins": 0
-      }
-    },
-    "8": {
-      "holdout": {
-        "boards": 32,
-        "wins": 10
-      },
-      "calibration": {
-        "boards": 32,
-        "wins": 18
-      }
-    },
-    "12": {
-      "holdout": {
-        "boards": 32,
-        "wins": 20
-      },
-      "calibration": {
-        "boards": 32,
-        "wins": 26
-      }
-    },
-    "16": {
-      "holdout": {
-        "boards": 32,
-        "wins": 24
-      },
-      "calibration": {
-        "boards": 32,
-        "wins": 29
-      }
-    },
-    "20": {
-      "holdout": {
-        "boards": 32,
-        "wins": 28
-      },
-      "calibration": {
-        "boards": 32,
-        "wins": 29
-      }
-    },
-    "24": {
-      "holdout": {
-        "boards": 32,
-        "wins": 30
-      },
-      "calibration": {
-        "boards": 32,
-        "wins": 32
-      }
-    },
-    "28": {
-      "holdout": {
-        "boards": 32,
-        "wins": 30
-      },
-      "calibration": {
-        "boards": 32,
-        "wins": 32
-      }
-    }
-  },
   "databricks": "SQL Statement Execution / SQLite parity",
   "aws_plan": "FREE / ACTIVE",
   "model": "qwen.qwen3-coder-30b-a3b-instruct",
   "region": "eu-north-1",
-  "utc": "2026-11-20T20:05:09.064129+00:00"
+  "utc": "2026-11-20T20:15:41.206370+00:00"
 }

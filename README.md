@@ -2,7 +2,7 @@
 
 A seaside glasshouse has lost its colour. Swap pieces of stained glass, clear the frost and restore six sections of the pier, from the tide steps to the kingfisher at the top of the cupola.
 
-**[Play in your browser](https://glebavershin.github.io/mosaic-pier/)** · [Download for macOS](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.0) · [Watch a playthrough](docs/evidence/playthrough.mp4) · [Технологии и результаты](docs/TECHNOLOGIES.md)
+**[Play in your browser](https://glebavershin.github.io/mosaic-pier/)** · [Download for macOS](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.1) · [Watch a playthrough](docs/evidence/playthrough.mp4) · [Технологии и результаты](docs/TECHNOLOGIES.md)
 
 ![The first chapter of Mosaic Pier with the kingfisher window and the playable board](docs/evidence/workshop.jpg)
 

@@ -1,37 +1,37 @@
 {
   "model": "qwen.qwen3-coder-30b-a3b-instruct",
-  "baseline_sha256": "eea26518e52bc23cc7e5ac218764808220cc34ba8087f1533672c24b314973f6",
-  "features_sha256": "91f2c0b73da6db3daf27cc10de43cfaef90db37e0c2afcdc05480b0c45620dd1",
+  "baseline_sha256": "0cc3b0913a592d88c8456232f8d5a7c1c37707e63f2e425284b8b0bb19319c66",
+  "features_sha256": "92c90f8a1ef8c0448801df9bba553263d70a2cd63ce1725e63a7dd19d5330ff2",
   "cases": [
     {
-      "scenario": "one_move_control",
+      "scenario": "old_candidate",
       "facts": {
-        "calibrated_budget": null,
-        "validation_win_percent": null,
-        "validation_threshold_percent": 75
+        "wins": 160,
+        "required_wins": 206,
+        "boards": 256
       },
       "rule": "revisit_budget",
-      "model_answer": "revisit_budget",
+      "model_answer": "keep_candidate",
+      "strict_before": false,
+      "strict_after": false,
+      "first_line_before": false,
+      "first_line_after": false,
+      "tokens": 89
+    },
+    {
+      "scenario": "release_budget",
+      "facts": {
+        "wins": 231,
+        "required_wins": 206,
+        "boards": 256
+      },
+      "rule": "keep_candidate",
+      "model_answer": "keep_candidate",
       "strict_before": false,
       "strict_after": true,
       "first_line_before": true,
       "first_line_after": true,
-      "tokens": 100
-    },
-    {
-      "scenario": "thirteen_panes",
-      "facts": {
-        "calibrated_budget": 12,
-        "validation_win_percent": 62.5,
-        "validation_threshold_percent": 75
-      },
-      "rule": "revisit_budget",
-      "model_answer": "revisit_budget",
-      "strict_before": false,
-      "strict_after": true,
-      "first_line_before": false,
-      "first_line_after": true,
-      "tokens": 106
+      "tokens": 89
     }
   ]
 }
