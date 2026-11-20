@@ -1,0 +1,19 @@
+{
+  "scope": "One completed responsive HUD job, including setup and QA. Model trace covers canonical handoff only.",
+  "job": "https://github.com/GlebAvershin/mosaic-pier/actions/runs/44798026285/job/136502583483",
+  "runner_labels": [
+    "ubuntu-24.04"
+  ],
+  "runner_started": "2026-11-20T19:00:11Z",
+  "runner_finished": "2026-11-20T19:01:21Z",
+  "runner_elapsed_seconds": 70.0,
+  "canonical_model_calls": 2,
+  "canonical_inference_tokens": 297,
+  "authoring_report_sha256": "cc5962270623c3eb3978772b72b39256e43a87b22ccaa5c5f66f3529fbf49ebe",
+  "incremental_charges_usd": {
+    "standard_public_runner_minutes": 0,
+    "external_model_api": 0
+  },
+  "basis": "Published public standard-runner tariff and self-hosted GGUF inference. Excludes storage, subscriptions and developer time.",
+  "tariff": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners"
+}

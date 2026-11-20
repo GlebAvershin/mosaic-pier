@@ -1,0 +1,60 @@
+{
+  "client": "Google Antigravity CLI",
+  "client_version": "1.5.13",
+  "additional_credits_enabled": false,
+  "requested_model": "claude-sonnet-4-6",
+  "brief_sha256": "92a504bea18b539b26a67c2bd7441c6f246d2f12b24c85cea97491268feb3dad",
+  "elapsed_ms": 40762,
+  "answer": {
+    "choice": "layout_1",
+    "reason": "layout_1 is the only option and correctly satisfies all three design directives: board (puzzle panes) fills the stage, moves leads as the headline, and hint is placed at the action position within thumb reach."
+  },
+  "bindings": {
+    "headline": "moves",
+    "stage": "board",
+    "action": "hint"
+  },
+  "mcp_acceptance": {
+    "headline": true,
+    "stage": true,
+    "action": true
+  },
+  "attempts": [
+    {
+      "brief_sha256": "24465af44eb2a5bcecab5a8880610fbade68d32b54d08eb76aad582bcf9a5b0f",
+      "elapsed_ms": 41879,
+      "answer": {
+        "choice": "moves-hint-board",
+        "reason": "This is the only option where headline=moves (lead with move budget), stage=board (largest region for puzzle panes), and action=hint (hint within thumb reach)."
+      },
+      "bindings": {
+        "headline": "moves",
+        "stage": "hint",
+        "action": "board"
+      },
+      "mcp_acceptance": {
+        "headline": true,
+        "stage": false,
+        "action": false
+      }
+    },
+    {
+      "brief_sha256": "92a504bea18b539b26a67c2bd7441c6f246d2f12b24c85cea97491268feb3dad",
+      "elapsed_ms": 40762,
+      "answer": {
+        "choice": "layout_1",
+        "reason": "layout_1 is the only option and correctly satisfies all three design directives: board (puzzle panes) fills the stage, moves leads as the headline, and hint is placed at the action position within thumb reach."
+      },
+      "bindings": {
+        "headline": "moves",
+        "stage": "board",
+        "action": "hint"
+      },
+      "mcp_acceptance": {
+        "headline": true,
+        "stage": true,
+        "action": true
+      }
+    }
+  ]
+}
