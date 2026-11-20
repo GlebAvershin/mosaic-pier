@@ -1,0 +1,51 @@
+{
+  "provider": "codex",
+  "model": "gpt-6.2-sol",
+  "brief": {
+    "instruction": "Choose a solvable finale with 2 to 5 moves left, at least two line sweeps and a cascade depth of at least three under the hint policy.",
+    "options": {
+      "kingfisher": {
+        "won": true,
+        "turns": 10,
+        "spare": 4,
+        "sweeps": 5,
+        "cascade": 4,
+        "remaining": 0
+      },
+      "pelican": {
+        "won": true,
+        "turns": 5,
+        "spare": 9,
+        "sweeps": 3,
+        "cascade": 6,
+        "remaining": 0
+      },
+      "sandpiper": {
+        "won": false,
+        "turns": 14,
+        "spare": 0,
+        "sweeps": 1,
+        "cascade": 3,
+        "remaining": 1
+      }
+    }
+  },
+  "decision": {
+    "choice": "kingfisher",
+    "reason": "Kingfisher wins with four moves to spare, five line sweeps, and a cascade depth of four."
+  },
+  "verdict": {
+    "accepted": true,
+    "seed": 900,
+    "moves": 14,
+    "panes": 13,
+    "replay": {
+      "won": true,
+      "turns": 10,
+      "spare": 4,
+      "sweeps": 5,
+      "cascade": 4,
+      "remaining": 0
+    }
+  }
+}

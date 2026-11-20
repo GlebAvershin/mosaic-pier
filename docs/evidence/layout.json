@@ -1,0 +1,47 @@
+{
+  "adapter": "layout_review.py",
+  "model": "qwen",
+  "brief": {
+    "instruction": "At six viewport sizes keep each token at least 44 CSS pixels wide, show controls without scrolling and prevent horizontal overflow. At widths of 1024 and above show journal and board side by side.",
+    "options": {
+      "board_first": {
+        "minimum_tile": 46,
+        "clipped_controls": 0,
+        "overflowing_layouts": 0,
+        "wide_side_by_side": true
+      },
+      "journal_first": {
+        "minimum_tile": 46,
+        "clipped_controls": 3,
+        "overflowing_layouts": 0,
+        "wide_side_by_side": true
+      },
+      "compact_split": {
+        "minimum_tile": 33,
+        "clipped_controls": 0,
+        "overflowing_layouts": 0,
+        "wide_side_by_side": true
+      }
+    }
+  },
+  "history": [
+    {
+      "choice": "board_first",
+      "context_bytes": 587,
+      "usage": {
+        "completion_tokens": 10,
+        "prompt_tokens": 188,
+        "total_tokens": 198,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "verdict": {
+        "accepted": true,
+        "failed_widths": [],
+        "viewports": 6
+      }
+    }
+  ],
+  "accepted": "board_first"
+}

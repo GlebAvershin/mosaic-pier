@@ -1,0 +1,1268 @@
+{
+  "run": "https://github.com/GlebAvershin/mosaic-pier/actions/runs/44777655756",
+  "revision": "2474b0d60001579d7065ae390f948740670e089e",
+  "requests": {
+    "project": "mosaic",
+    "unauthorized_status": 401,
+    "negative_control": {
+      "choice": "sandpiper",
+      "verdict": {
+        "accepted": false,
+        "seed": 902,
+        "moves": 14,
+        "panes": 13,
+        "replay": {
+          "won": false,
+          "turns": 14,
+          "spare": 0,
+          "sweeps": 1,
+          "cascade": 3,
+          "remaining": 1
+        }
+      }
+    },
+    "fresh": {
+      "cache": {
+        "miss": 2,
+        "hit": 6
+      },
+      "tokens": 1041,
+      "model_calls": 4,
+      "p50_ms": 2147.635,
+      "p95_ms": 2190.01,
+      "responses": [
+        {
+          "result": {
+            "choice": "kingfisher",
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "accepted": true,
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "turns": 10,
+                    "spare": 4,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  }
+                }
+              }
+            ],
+            "tokens": 219
+          },
+          "cache": "miss",
+          "inference_tokens": 219,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 2186.87
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 2189.66
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 2107.9
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 2100.59
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 2190.01
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 2189.43
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 2108.4
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "accepted": false,
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "turns": 5,
+                    "spare": 9,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  }
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "accepted": false,
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "turns": 14,
+                    "spare": 0,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  }
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "accepted": true,
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "turns": 10,
+                    "spare": 4,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  }
+                }
+              }
+            ],
+            "tokens": 822
+          },
+          "cache": "miss",
+          "inference_tokens": 822,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 2091.11
+        }
+      ]
+    },
+    "repeat": {
+      "cache": {
+        "hit": 8
+      },
+      "tokens": 0,
+      "model_calls": 0,
+      "p50_ms": 26.515,
+      "p95_ms": 30.51,
+      "responses": [
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 30.09
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 21.98
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 30.43
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 23.73
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 26.72
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 24.41
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-dcx2t",
+          "client_ms": 30.51
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-fh4cd",
+          "client_ms": 26.31
+        }
+      ]
+    },
+    "other_team": {
+      "result": {
+        "choice": "kingfisher",
+        "history": [
+          {
+            "choice": "kingfisher",
+            "verdict": {
+              "accepted": true,
+              "seed": 900,
+              "moves": 14,
+              "panes": 13,
+              "replay": {
+                "won": true,
+                "turns": 10,
+                "spare": 4,
+                "sweeps": 5,
+                "cascade": 4,
+                "remaining": 0
+              }
+            }
+          }
+        ],
+        "tokens": 219
+      },
+      "cache": "miss",
+      "inference_tokens": 219,
+      "model": "qwen",
+      "worker": "game-review-5d68c4557b-fh4cd",
+      "client_ms": 308.74
+    }
+  },
+  "restored": {
+    "project": "mosaic",
+    "unauthorized_status": 401,
+    "negative_control": {
+      "choice": "sandpiper",
+      "verdict": {
+        "accepted": false,
+        "seed": 902,
+        "moves": 14,
+        "panes": 13,
+        "replay": {
+          "won": false,
+          "turns": 14,
+          "spare": 0,
+          "sweeps": 1,
+          "cascade": 3,
+          "remaining": 1
+        }
+      }
+    },
+    "restored": {
+      "cache": {
+        "hit": 8
+      },
+      "tokens": 0,
+      "model_calls": 0,
+      "p50_ms": 29.27,
+      "p95_ms": 33.52,
+      "responses": [
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-7bd9b86464-2xf56",
+          "client_ms": 18.51
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-7bd9b86464-h7tls",
+          "client_ms": 29.21
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-7bd9b86464-2xf56",
+          "client_ms": 33.52
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-7bd9b86464-h7tls",
+          "client_ms": 25.99
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-7bd9b86464-2xf56",
+          "client_ms": 31.95
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 219,
+            "history": [
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-7bd9b86464-h7tls",
+          "client_ms": 26.85
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-7bd9b86464-2xf56",
+          "client_ms": 31.88
+        },
+        {
+          "result": {
+            "choice": "kingfisher",
+            "tokens": 822,
+            "history": [
+              {
+                "choice": "pelican",
+                "verdict": {
+                  "seed": 901,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 9,
+                    "turns": 5,
+                    "sweeps": 3,
+                    "cascade": 6,
+                    "remaining": 0
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "sandpiper",
+                "verdict": {
+                  "seed": 902,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": false,
+                    "spare": 0,
+                    "turns": 14,
+                    "sweeps": 1,
+                    "cascade": 3,
+                    "remaining": 1
+                  },
+                  "accepted": false
+                }
+              },
+              {
+                "choice": "kingfisher",
+                "verdict": {
+                  "seed": 900,
+                  "moves": 14,
+                  "panes": 13,
+                  "replay": {
+                    "won": true,
+                    "spare": 4,
+                    "turns": 10,
+                    "sweeps": 5,
+                    "cascade": 4,
+                    "remaining": 0
+                  },
+                  "accepted": true
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-7bd9b86464-h7tls",
+          "client_ms": 29.33
+        }
+      ]
+    },
+    "other_team": {
+      "result": {
+        "choice": "kingfisher",
+        "tokens": 219,
+        "history": [
+          {
+            "choice": "kingfisher",
+            "verdict": {
+              "seed": 900,
+              "moves": 14,
+              "panes": 13,
+              "replay": {
+                "won": true,
+                "spare": 4,
+                "turns": 10,
+                "sweeps": 5,
+                "cascade": 4,
+                "remaining": 0
+              },
+              "accepted": true
+            }
+          }
+        ]
+      },
+      "cache": "hit",
+      "inference_tokens": 0,
+      "model": "qwen",
+      "worker": "game-review-7bd9b86464-h7tls",
+      "client_ms": 7.05
+    }
+  }
+}

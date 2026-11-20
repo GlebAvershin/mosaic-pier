@@ -1,0 +1,47 @@
+name: Build, play and publish
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**/*.md"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile WebAssembly with the release compiler
+        run: |
+          curl -fsSL --retry 3 https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-25/wasi-sdk-25.0-x86_64-linux.tar.gz -o /tmp/wasi.tgz
+          tar -xzf /tmp/wasi.tgz -C /tmp
+          WASM_CXX=/tmp/wasi-sdk-25.0-x86_64-linux/bin/clang++ tools/build-web.sh
+          git diff --exit-code -- web/pier.wasm
+      - run: tools/check.sh && tools/unity-plugin.sh
+      - name: Play the campaign on desktop and touch Chromium
+        run: |
+          python3 -m venv /tmp/browser
+          /tmp/browser/bin/pip -q install playwright==1.58.0
+          /tmp/browser/bin/playwright install --with-deps chromium
+          python3 -m http.server 8754 --bind 127.0.0.1 -d web >/tmp/pier-http.log 2>&1 &
+          /tmp/browser/bin/python tools/playtest.py http://127.0.0.1:8754 --out /tmp/browser-report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: browser-playthrough
+          path: /tmp/browser-report
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+  publish:
+    needs: replay
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: pages

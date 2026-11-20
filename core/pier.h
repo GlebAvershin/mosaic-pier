@@ -3,23 +3,27 @@
 
 namespace pier {
 constexpr int Width = 6, Cells = Width * Width, Chapters = 6;
-struct Contract { uint32_t seed; int moves; int panes; };
+struct Contract {
+  uint32_t seed;
+  int moves;
+  int panes;
+};
 struct Board {
-    uint32_t rng;
-    int tiles[Cells], frost[Cells], clear[Cells], fall[Cells];
-    int moves, remaining, score, chain, sweeps, shuffled;
-    uint32_t next();
-    void deal();
-    void start(Contract spec);
-    bool mark();
-    bool legal(int a, int b);
-    bool swap(int a, int b);
-    void step();
-    bool mobile();
-    int hint();
+  uint32_t rng;
+  int tiles[Cells], frost[Cells], clear[Cells], fall[Cells];
+  int moves, remaining, score, chain, sweeps, shuffled;
+  uint32_t next();
+  void deal();
+  void start(Contract spec);
+  bool mark();
+  bool legal(int a, int b);
+  bool swap(int a, int b);
+  void step();
+  bool mobile();
+  int hint();
 };
 extern const Contract campaign[Chapters];
-}
+} // namespace pier
 
 extern "C" {
 int mp_start(int chapter);

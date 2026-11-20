@@ -1,0 +1,61 @@
+{
+  "engine": "157.0.8103.79",
+  "chapters": [
+    {
+      "chapter": "Tide Steps",
+      "turns": 2,
+      "remaining": 8,
+      "score": 120
+    },
+    {
+      "chapter": "Brass Arcade",
+      "turns": 4,
+      "remaining": 5,
+      "score": 420
+    },
+    {
+      "chapter": "Citrus Court",
+      "turns": 6,
+      "remaining": 5,
+      "score": 2860
+    },
+    {
+      "chapter": "Sea Lanterns",
+      "turns": 8,
+      "remaining": 5,
+      "score": 2100
+    },
+    {
+      "chapter": "The Sun Window",
+      "turns": 9,
+      "remaining": 5,
+      "score": 1810
+    },
+    {
+      "chapter": "Kingfisher Crown",
+      "turns": 10,
+      "remaining": 4,
+      "score": 2320
+    }
+  ],
+  "viewport": [
+    1320,
+    850
+  ],
+  "mobile_viewport": [
+    390,
+    844
+  ],
+  "checks": [
+    "six restorations",
+    "keyboard match",
+    "invalid swap",
+    "saved board replay",
+    "completed campaign reload",
+    "sound control",
+    "guide",
+    "touch swipe",
+    "mobile overflow"
+  ],
+  "page_errors": []
+}
