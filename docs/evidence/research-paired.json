@@ -1,28 +1,30 @@
 {
   "model": "qwen.qwen3-coder-30b-a3b-instruct",
   "baseline_sha256": "0cc3b0913a592d88c8456232f8d5a7c1c37707e63f2e425284b8b0bb19319c66",
-  "features_sha256": "92c90f8a1ef8c0448801df9bba553263d70a2cd63ce1725e63a7dd19d5330ff2",
+  "features_sha256": "1b3effdbde96dfd57fd0f54f2e0c91ae0c3d077217190987e5d7a9ef8c75be62",
   "cases": [
     {
       "scenario": "old_candidate",
       "facts": {
-        "wins": 160,
-        "required_wins": 206,
+        "observed_wins": 160,
+        "minimum_wins_inclusive": 206,
+        "additional_wins_needed_to_reach_minimum": 46,
         "boards": 256
       },
       "rule": "revisit_budget",
-      "model_answer": "keep_candidate",
+      "model_answer": "revisit_budget",
       "strict_before": false,
-      "strict_after": false,
+      "strict_after": true,
       "first_line_before": false,
-      "first_line_after": false,
-      "tokens": 89
+      "first_line_after": true,
+      "tokens": 109
     },
     {
       "scenario": "release_budget",
       "facts": {
-        "wins": 231,
-        "required_wins": 206,
+        "observed_wins": 231,
+        "minimum_wins_inclusive": 206,
+        "additional_wins_needed_to_reach_minimum": 0,
         "boards": 256
       },
       "rule": "keep_candidate",
@@ -31,7 +33,7 @@
       "strict_after": true,
       "first_line_before": true,
       "first_line_after": true,
-      "tokens": 89
+      "tokens": 107
     }
   ]
 }
