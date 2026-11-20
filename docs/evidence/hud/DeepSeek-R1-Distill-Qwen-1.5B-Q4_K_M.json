@@ -1,0 +1,57 @@
+{
+  "project": "Mosaic Pier",
+  "model": "DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M",
+  "weights_sha256": "1741e5b2d062b07acf048bf0d2c514dadf2a48f94e2b4aa0cfe069af3838ee2f",
+  "expected": {
+    "headline": "moves",
+    "stage": "board",
+    "action": "hint"
+  },
+  "cases_sha256": "0c96705e788ed9a27f501110d83c2f463a3197cffaaec6f4bc1cfe19b17e5834",
+  "rows": [
+    {
+      "instructions": {
+        "headline": "How many swaps remain?",
+        "stage": "Where are the pieces of the window?",
+        "action": "Help me find a good swap."
+      },
+      "baseline": {
+        "headline": "board",
+        "stage": "moves",
+        "action": "hint"
+      },
+      "model": {
+        "headline": "hint",
+        "stage": "hint",
+        "action": "hint"
+      },
+      "baseline_correct": 1,
+      "model_correct": 1,
+      "baseline_us": 153,
+      "model_ms": 2828,
+      "tokens": 389
+    },
+    {
+      "instructions": {
+        "headline": "Put the remaining turns above the puzzle.",
+        "stage": "Use the main space for the glass pattern.",
+        "action": "Offer a clue at the bottom."
+      },
+      "baseline": {
+        "headline": "moves",
+        "stage": "board",
+        "action": "hint"
+      },
+      "model": {
+        "headline": "hint",
+        "stage": "hint",
+        "action": "hint"
+      },
+      "baseline_correct": 3,
+      "model_correct": 1,
+      "baseline_us": 108,
+      "model_ms": 2951,
+      "tokens": 393
+    }
+  ]
+}

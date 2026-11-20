@@ -1,0 +1,49 @@
+{
+  "project": "Mosaic Pier",
+  "screen": "Glass workshop",
+  "route": "llama",
+  "requested_model": "qwen",
+  "game_revision": "7654c026f322967c00ca3c4aace0ab51fe437ceb",
+  "brief_sha256": "6ad877a3f4d184dd64bea14bd1e798a4d558542356383397fb8dfa71d6d922d1",
+  "bindings": {
+    "headline": "moves",
+    "stage": "board",
+    "action": "hint"
+  },
+  "negative_control": {
+    "headline": "board",
+    "stage": "hint",
+    "action": "moves"
+  },
+  "rejected_control_regions": [
+    "headline",
+    "stage",
+    "action"
+  ],
+  "trace": [
+    {
+      "region": "headline",
+      "component": "moves",
+      "origin": "inference",
+      "tokens": 154,
+      "accepted": true
+    },
+    {
+      "region": "stage",
+      "component": "board",
+      "origin": "inference",
+      "tokens": 143,
+      "accepted": true
+    },
+    {
+      "region": "action",
+      "component": "hint",
+      "origin": "elimination",
+      "tokens": 0,
+      "accepted": true
+    }
+  ],
+  "model_calls": 2,
+  "inference_tokens": 297,
+  "authoring_ms": 1232
+}
