@@ -1,0 +1,60 @@
+{
+  "project": "Mosaic Pier",
+  "screen": "Glass workshop",
+  "route": "databricks",
+  "requested_model": "databricks-qwen3-next-80b-a3b-instruct",
+  "game_revision": "facb22bf0baadb154e8a865d39ea2f913bb86c68",
+  "brief_sha256": "6ad877a3f4d184dd64bea14bd1e798a4d558542356383397fb8dfa71d6d922d1",
+  "bindings": {
+    "headline": "moves",
+    "stage": "board",
+    "action": "hint"
+  },
+  "negative_control": {
+    "headline": "board",
+    "stage": "hint",
+    "action": "moves"
+  },
+  "rejected_control_regions": [
+    "headline",
+    "stage",
+    "action"
+  ],
+  "trace": [
+    {
+      "region": "headline",
+      "component": "moves",
+      "origin": "inference",
+      "tokens": 108,
+      "accepted": true
+    },
+    {
+      "region": "stage",
+      "component": "board",
+      "origin": "inference",
+      "tokens": 98,
+      "accepted": true
+    },
+    {
+      "region": "action",
+      "component": "hint",
+      "origin": "elimination",
+      "tokens": 0,
+      "accepted": true
+    }
+  ],
+  "model_calls": 2,
+  "inference_tokens": 206,
+  "authoring_ms": 3017,
+  "edition": "Free Edition",
+  "endpoint_observation": {
+    "endpoint": "databricks-qwen3-next-80b-a3b-instruct",
+    "observed_utc": "2026-11-20T19:54:19.046850+00:00",
+    "ai_gateway": {
+      "configuration_returned": true,
+      "usage_tracking": true,
+      "payload_logging": false,
+      "rate_limits": []
+    }
+  }
+}

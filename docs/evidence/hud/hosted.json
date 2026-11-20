@@ -1,0 +1,26 @@
+{
+  "mcp": {
+    "game": "Mosaic Pier",
+    "revision": "facb22bf0baadb154e8a865d39ea2f913bb86c68",
+    "brief_sha256": "6ad877a3f4d184dd64bea14bd1e798a4d558542356383397fb8dfa71d6d922d1",
+    "accepted_regions": 3,
+    "rejected_control_regions": 3,
+    "source": "developer_qa"
+  },
+  "receipts": [
+    {
+      "service": "sentry",
+      "phase": "ingestion_acknowledged",
+      "http_status": 200,
+      "event_id": "47dfb0d186175714b8a8eac892968213",
+      "timestamp_utc": "2026-11-20T19:41:52.436682+00:00"
+    },
+    {
+      "service": "amplitude",
+      "phase": "ingestion_acknowledged",
+      "http_status": 200,
+      "event_id": "207d7ddb07bc5208bbe03f377f5494e6",
+      "timestamp_utc": "2026-11-20T19:42:45.092704+00:00"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "project": "Mosaic Pier",
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "source": "initial_whole_screen_prompt",
+  "input_shape": "screen, design instructions, component catalog",
+  "expected_keys": [
+    "headline",
+    "stage",
+    "action"
+  ],
+  "response": {
+    "board": "Study the panes in the stained glass puzzle.",
+    "hint": "Request a hint for the next swap.",
+    "moves": "Check the remaining move budget."
+  },
+  "usage": {
+    "completion_tokens": 42,
+    "prompt_tokens": 113,
+    "total_tokens": 155
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "project": "Mosaic Pier",
+  "screen": "Glass workshop",
+  "route": "bedrock-mantle",
+  "requested_model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "game_revision": "facb22bf0baadb154e8a865d39ea2f913bb86c68",
+  "brief_sha256": "6ad877a3f4d184dd64bea14bd1e798a4d558542356383397fb8dfa71d6d922d1",
+  "bindings": {
+    "headline": "moves",
+    "stage": "board",
+    "action": "hint"
+  },
+  "negative_control": {
+    "headline": "board",
+    "stage": "hint",
+    "action": "moves"
+  },
+  "rejected_control_regions": [
+    "headline",
+    "stage",
+    "action"
+  ],
+  "trace": [
+    {
+      "region": "headline",
+      "component": "moves",
+      "origin": "inference",
+      "tokens": 133,
+      "accepted": true
+    },
+    {
+      "region": "stage",
+      "component": "board",
+      "origin": "inference",
+      "tokens": 122,
+      "accepted": true
+    },
+    {
+      "region": "action",
+      "component": "hint",
+      "origin": "elimination",
+      "tokens": 0,
+      "accepted": true
+    }
+  ],
+  "model_calls": 2,
+  "inference_tokens": 255,
+  "authoring_ms": 2328,
+  "region": "eu-north-1",
+  "account_plan_at_run": "FREE",
+  "account_plan_status": "ACTIVE"
+}
