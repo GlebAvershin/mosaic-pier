@@ -1,0 +1,152 @@
+{
+  "board_first": [
+    {
+      "w": 360,
+      "h": 740,
+      "tile": 46,
+      "controls_bottom": 653,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "tile": 51,
+      "controls_bottom": 640,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 600,
+      "h": 800,
+      "tile": 66,
+      "controls_bottom": 734,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 750,
+      "h": 800,
+      "tile": 66,
+      "controls_bottom": 734,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "tile": 61,
+      "controls_bottom": 753,
+      "overflow": 0,
+      "side_by_side": true
+    },
+    {
+      "w": 1320,
+      "h": 850,
+      "tile": 66,
+      "controls_bottom": 808,
+      "overflow": 0,
+      "side_by_side": true
+    }
+  ],
+  "journal_first": [
+    {
+      "w": 360,
+      "h": 740,
+      "tile": 46,
+      "controls_bottom": 840,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "tile": 51,
+      "controls_bottom": 827,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 600,
+      "h": 800,
+      "tile": 66,
+      "controls_bottom": 921,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 750,
+      "h": 800,
+      "tile": 66,
+      "controls_bottom": 921,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "tile": 61,
+      "controls_bottom": 753,
+      "overflow": 0,
+      "side_by_side": true
+    },
+    {
+      "w": 1320,
+      "h": 850,
+      "tile": 66,
+      "controls_bottom": 808,
+      "overflow": 0,
+      "side_by_side": true
+    }
+  ],
+  "compact_split": [
+    {
+      "w": 360,
+      "h": 740,
+      "tile": 46,
+      "controls_bottom": 653,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "tile": 51,
+      "controls_bottom": 640,
+      "overflow": 0,
+      "side_by_side": false
+    },
+    {
+      "w": 600,
+      "h": 800,
+      "tile": 33,
+      "controls_bottom": 675,
+      "overflow": 0,
+      "side_by_side": true
+    },
+    {
+      "w": 750,
+      "h": 800,
+      "tile": 43,
+      "controls_bottom": 693,
+      "overflow": 0,
+      "side_by_side": true
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "tile": 61,
+      "controls_bottom": 753,
+      "overflow": 0,
+      "side_by_side": true
+    },
+    {
+      "w": 1320,
+      "h": 850,
+      "tile": 66,
+      "controls_bottom": 808,
+      "overflow": 0,
+      "side_by_side": true
+    }
+  ]
+}

@@ -23,6 +23,8 @@ private:
   UPROPERTY() TArray<TObjectPtr<UTexture2D>> Glass;
   UPROPERTY() TObjectPtr<UTexture2D> Coast;
   int32 Chapter = 0, Selected = -1, Hint = -1, Restored = 0;
+  bool bMaster = false;
+  void LoadJournal();
   double NextStep = 0;
   FString Message;
   void OpenChapter(int32 Index);

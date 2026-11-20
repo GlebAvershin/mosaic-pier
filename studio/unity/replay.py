@@ -28,12 +28,12 @@ async def replay(project):
             raise RuntimeError(str(result.content))
         payload = json.loads(result.content[0].text)
 
-    with (ROOT / "docs/evidence/unity-player.csv").open() as file:
-        expected = [dict(panes_left=0, **{k: int(v) for k, v in row.items()}) for row in csv.DictReader(file)]
-    if payload["chapters"] != expected:
-        raise ValueError(f"Editor and release replay diverged: {payload['chapters']}")
-    return {"server": info.serverInfo.name, "version": info.serverInfo.version,
-            "tool": TOOL, "editor": payload["editor"], "chapters": payload["chapters"]}
+    for key, filename in [("chapters", "unity-player.csv"), ("commissions", "unity-master.csv")]:
+        with (ROOT / "docs/evidence" / filename).open() as file:
+            expected = [dict(panes_left=0, **{k: int(v) for k, v in row.items()}) for row in csv.DictReader(file)]
+        if payload[key] != expected:
+            raise ValueError(f"Editor and release replay diverged for {key}: {payload[key]}")
+    return {"server": info.serverInfo.name, "version": info.serverInfo.version, "tool": TOOL, **payload}
 
 
 if __name__ == "__main__":

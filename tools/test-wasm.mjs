@@ -12,3 +12,14 @@ for(let i=0;i<r.mp_count();i++){
   assert.equal(r.mp_status(),2);
   console.log(i,r.mp_moves(),r.mp_score());
 }
+
+for (let chapter=0;chapter<r.mp_count();chapter++) {
+  r.mp_start_master(chapter);
+  while (r.mp_status()===0) {
+    const pair=r.mp_hint();
+    assert.ok(r.mp_swap(Math.floor(pair/36),pair%36));
+    while (r.mp_status()===1) r.mp_step();
+  }
+  assert.equal(r.mp_status(),2);
+  console.log("master",chapter,r.mp_moves(),r.mp_score());
+}

@@ -125,8 +125,9 @@ void Board::step() {
     if (clear[i]) {
       ++removed;
       if (frost[i]) {
-        frost[i] = 0;
-        --remaining;
+        int broken = clear[i] == 2 ? frost[i] : 1;
+        frost[i] -= broken;
+        remaining -= broken;
       }
     }
   }
@@ -189,7 +190,8 @@ int Board::hint() {
 }
 } // namespace pier
 namespace {
-pier::Board active;
+pier::Board active, previous;
+bool hasPrevious = false, rewindSpent = false;
 int stage = 3;
 int update() {
   for (int c : active.clear)
@@ -203,6 +205,25 @@ int mp_start(int ch) {
   if (ch < 0 || ch >= pier::Chapters)
     return 0;
   active.start(pier::campaign[ch]);
+  hasPrevious = rewindSpent = false;
+  update();
+  return 1;
+}
+int mp_start_master(int ch) {
+  if (ch < 0 || ch >= pier::Chapters) return 0;
+  // Independent commissions let existing journals keep their original seeds.
+  const pier::Contract commissions[] = {
+    {5005, 8, 6}, {5102, 11, 8}, {5236, 13, 9},
+    {5300, 16, 11}, {5404, 19, 13}, {5514, 23, 16}
+  };
+  active.start(commissions[ch]);
+  int thick = 0;
+  for (int i = 0; i < pier::Cells; ++i) {
+    if (!active.frost[i]) continue;
+    // Reinforce alternating goal cells in reading order.
+    if (thick++ % 2 == 0) { ++active.frost[i]; ++active.remaining; }
+  }
+  hasPrevious = rewindSpent = false;
   update();
   return 1;
 }
@@ -218,8 +239,15 @@ int mp_sweeps() { return active.sweeps; }
 int mp_shuffle() { return active.shuffled; }
 int mp_status() { return stage; }
 int mp_swap(int a, int b) {
-  if (stage != 0 || !active.swap(a, b))
+  if (stage != 0)
     return 0;
+  auto before = active;
+  if (!active.swap(a, b))
+    return 0;
+  if (!rewindSpent) {
+    previous = before;
+    hasPrevious = true;
+  }
   update();
   return 1;
 }
@@ -231,5 +259,14 @@ int mp_step() {
   return stage;
 }
 int mp_hint() { return stage == 0 ? active.hint() : -1; }
+int mp_can_rewind() { return hasPrevious && !rewindSpent && stage != 1; }
+int mp_rewind() {
+  if (!mp_can_rewind())
+    return 0;
+  active = previous;
+  rewindSpent = true;
+  update();
+  return 1;
+}
 int mp_count() { return pier::Chapters; }
 }

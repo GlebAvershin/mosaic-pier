@@ -1,7 +1,8 @@
 """Cut five original glass tokens from radial polygons. Requires Pillow."""
 import math
+import shutil
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 root = Path(__file__).resolve().parents[1] / "web/assets"
 shapes = [
@@ -33,5 +34,39 @@ for name, outline, rgb in shapes:
     for pts,color,w in [(outline,tint(rgb,.47),2),(inner,tint(rgb,1.15,34),.65)]:
         d.line(list(map(xy,pts+[pts[0]])),fill=color,width=round(w*4),joint="curve")
     d.line(list(map(xy,[outline[-1],outline[0],outline[1]])),fill=tint(rgb,1.1,73),width=4)
-    shadow.alpha_composite(img)
-    shadow.resize((128,128),Image.Resampling.LANCZOS).save(root/(name+".png"))
+    # Rippled glass comes from the same backlit surface as the restored window.
+    grain = Image.open(root / "kingfisher.jpg").crop((90, 945, 290, 1145)).resize(img.size)
+    material = ImageOps.colorize(ImageOps.grayscale(grain), tint(rgb, .44), tint(rgb, 1.12, 58))
+    enamel = Image.blend(img.convert("RGB"), material, .24).convert("RGBA")
+    enamel.putalpha(img.getchannel("A"))
+    pen = ImageDraw.Draw(enamel)
+    gold, glint = (255, 230, 157), (255, 246, 205)
+    def line(points, width=1.5, color=gold):
+        pen.line(list(map(xy, points)), fill=color, width=round(width*4), joint="curve")
+    def arc(box, start, end):
+        pen.arc(tuple(round(v*4) for v in box), start, end, fill=gold, width=6)
+    line(outline+[outline[0]], 1.6, (121,90,49))
+    line(outline[-2:]+outline[:2], 1.2, glint)
+    if name == "lagoon":
+        arc((34,39,62,68),15,153)
+        arc((39,48,59,65),20,145)
+    elif name == "honey":
+        pen.ellipse((168,156,224,212),outline=glint,width=6)
+        for k in range(8):
+            t=k*math.pi/4
+            line([(49+10*math.cos(t),46+10*math.sin(t)),(49+15*math.cos(t),46+15*math.sin(t))])
+    elif name == "coral":
+        for x,y in [(35,38),(42,33),(50,31),(58,33),(65,38)]:
+            line([(50,60),(x,y)])
+        arc((34,31,66,48),180,360)
+    elif name == "orchid":
+        line([(50,32),(54,45),(62,50),(54,54),(50,68),(46,54),(38,50),(46,45),(50,32)])
+    else:
+        line([(32,69),(64,32)])
+        line([(45,53),(44,39)])
+        line([(49,49),(63,47)])
+    shadow.alpha_composite(enamel)
+    destination = root / (name+".png")
+    shadow.resize((160,160),Image.Resampling.LANCZOS).save(destination)
+    for client in ("engines/Unity/Assets/Resources", "engines/Unreal/Content/Glass"):
+        shutil.copyfile(destination, root.parents[1]/client/destination.name)

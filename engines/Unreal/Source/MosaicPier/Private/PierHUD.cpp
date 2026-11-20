@@ -27,21 +27,27 @@ void APierHUD::BeginPlay() {
   PC->bEnableClickEvents = true;
   PC->SetInputMode(FInputModeGameAndUI().SetHideCursorDuringCapture(false));
   FString Path = FPaths::ProjectContentDir() / TEXT("Glass");
-  Coast = FImageUtils::ImportFileAsTexture2D(Path / TEXT("glasshouse.jpg"));
+  Coast = FImageUtils::ImportFileAsTexture2D(Path / TEXT("kingfisher.jpg"));
   for (const TCHAR *File :
        {TEXT("lagoon.png"), TEXT("honey.png"), TEXT("coral.png"),
         TEXT("orchid.png"), TEXT("fern.png")})
     Glass.Add(FImageUtils::ImportFileAsTexture2D(Path / File));
-  GConfig->GetInt(TEXT("MosaicPier"), TEXT("Restored"), Restored,
+  GConfig->GetBool(TEXT("MosaicPier"), TEXT("MasterMode"), bMaster, GGameUserSettingsIni);
+  LoadJournal();
+}
+void APierHUD::LoadJournal() {
+  Restored = 0;
+  GConfig->GetInt(TEXT("MosaicPier"), bMaster ? TEXT("MasterRestored") : TEXT("Restored"), Restored,
                   GGameUserSettingsIni);
   Restored = FMath::Clamp(Restored, 0, 6);
   OpenChapter(FMath::Min(Restored, 5));
 }
 void APierHUD::OpenChapter(int32 Index) {
   Chapter = Index;
-  mp_start(Chapter);
+  if (bMaster) mp_start_master(Chapter);
+  else mp_start(Chapter);
   Selected = Hint = -1;
-  Message = TEXT(
+  Message = bMaster ? TEXT("Double rims mark two layers. A line sweep breaks both.") : TEXT(
       "Match three over the pale panes. Four in a line sweeps the whole line.");
 }
 void APierHUD::DrawHUD() {
@@ -108,6 +114,10 @@ void APierHUD::DrawHUD() {
     if (mp_frost(I))
       for (int32 J = 0; J < 3; J++)
         Panel(A + 4 + J * 6, B + 2, 2, 8, Paper);
+    if (mp_frost(I)==2) {
+      Panel(A+3, B+3, 55, 2, Gold);
+      Panel(A+55, B+4, 2, 52, Gold);
+    }
     auto *Gem = Glass[mp_tile(I) - 1].Get();
     const float Size = mp_status() == 1 && mp_clear(I) ? 42.f : 54.f;
     if (Gem)
@@ -122,30 +132,45 @@ void APierHUD::DrawHUD() {
                     : Message,
        20, 534, .78f);
   auto Button = [&](float A, const TCHAR *Title, FName Name) {
-    Panel(A, 573, 205, 45, FLinearColor(.69f, .73f, .61f));
-    Text(Title, A + 15, 583, 1);
-    Hit(A, 573, 205, 45, Name);
+    Panel(A, 573, 148, 45, FLinearColor(.69f, .73f, .61f));
+    Text(Title, A + 7, 583, .85f);
+    Hit(A, 573, 148, 45, Name);
   };
   if (State >= 2)
-    Button(168, State == 3 ? TEXT("Try again") : TEXT("Restore glass"),
+    Button(42, State == 3 ? TEXT("Try again") : TEXT("Restore glass"),
            TEXT("Continue"));
   else {
-    Button(54, TEXT("Show hint"), TEXT("Hint"));
-    Button(279, TEXT("Restart level"), TEXT("Retry"));
+    Button(42, TEXT("Show hint"), TEXT("Hint"));
+    Button(356, TEXT("Restart level"), TEXT("Retry"));
   }
+  if (mp_can_rewind()) Button(199, TEXT("Undo move"), TEXT("Undo"));
+  DrawText(bMaster ? TEXT("Return to story") : TEXT("Play masterwork"), Paper, Ox+21*S, Oy+(ArtH-26)*S, GEngine->GetMediumFont(), .8f*S);
+  AddHitBox(FVector2D(Ox+16*S,Oy+(ArtH-28)*S), FVector2D(180*S,28*S),TEXT("Mode"),true);
 }
 void APierHUD::NotifyHitBoxClick(FName BoxName) {
   Super::NotifyHitBoxClick(BoxName);
   if (mp_status() == 1)
     return;
   const FString Box = BoxName.ToString();
+  if (Box == TEXT("Mode")) {
+    bMaster = !bMaster;
+    GConfig->SetBool(TEXT("MosaicPier"), TEXT("MasterMode"), bMaster, GGameUserSettingsIni);
+    GConfig->Flush(false, GGameUserSettingsIni);
+    LoadJournal();
+    return;
+  }
+  if (Box == TEXT("Undo") && mp_rewind()) {
+    Selected = Hint = -1;
+    Message = TEXT("Previous exchange undone.");
+    return;
+  }
   if (Box == TEXT("Continue") && mp_status() >= 2) {
     if (mp_status() == 3) {
       OpenChapter(Chapter);
       return;
     }
     Restored = FMath::Max(Restored, Chapter + 1);
-    GConfig->SetInt(TEXT("MosaicPier"), TEXT("Restored"), Restored,
+    GConfig->SetInt(TEXT("MosaicPier"), bMaster ? TEXT("MasterRestored") : TEXT("Restored"), Restored,
                     GGameUserSettingsIni);
     GConfig->Flush(false, GGameUserSettingsIni);
     OpenChapter((Chapter + 1) % 6);

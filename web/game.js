@@ -9,12 +9,15 @@ const stories = [
   'High in the cupola, a kingfisher waits for its last pane of blue.'
 ];
 const pieces = ['', 'lagoon', 'honey', 'coral', 'orchid', 'fern'];
-const cells = [], key = 'mosaic-pier-v1';
+const cells = [];
+let master = false;
+function storageKey() { return master ? 'mosaic-pier-master-v1' : 'mosaic-pier-v1'; }
+function startBoard(ch) { return master ? rules.mp_start_master(ch) : rules.mp_start(ch); }
 let rules, selected = -1, hinted = [], busy = false, audio, sound = false;
 let save = {chapter:0, restored:0, history:[]};
 let pointer, skipClick = false;
 const sleep = ms => new Promise(r => setTimeout(r, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : ms));
-function persist() { try { localStorage.setItem(key, JSON.stringify(save)); } catch {} }
+function persist() { try { localStorage.setItem(storageKey(), JSON.stringify(save)); } catch {} }
 function note(message) { $('message').textContent = message; }
 function ring(tone) {
   if (!sound || !audio) return;
@@ -31,13 +34,13 @@ function modal(tag, title, copy, label, act, cancel = false) {
   $('modalTag').textContent=tag; $('modalTitle').textContent=title; $('modalText').textContent=copy;
   $('modalAction').textContent=label;
   $('modalAction').onclick=()=>{d.close();act?.();};
-  $('modalCancel').hidden=!cancel; $('modalCancel').onclick=()=>d.close();
+  $('modalCancel').textContent='Keep playing';$('modalCancel').hidden=!cancel; $('modalCancel').onclick=()=>d.close();
   d.oncancel=e=>{if(!cancel && rules?.mp_status()>=2)e.preventDefault();};
   if (!d.open) d.showModal();
 }
 function journal() {
   $('chapter').textContent=names[save.chapter];
-  $('chapterNo').textContent='CHAPTER '+String(save.chapter+1).padStart(2,'0')+' / 06';
+  $('chapterNo').textContent=(master?'MASTERWORK ':'CHAPTER ')+String(save.chapter+1).padStart(2,'0')+' / 06';
   $('story').textContent=stories[save.chapter]; $('progress').textContent=save.restored+' of 6 sections restored';
   $('steps').replaceChildren(...names.map((name,i)=>{const s=document.createElement('i');s.title=name;s.classList.toggle('done',i<save.restored);return s;}));
   $('color').style.clipPath='inset(0 '+(100-100*save.restored/6)+'% 0 0)';
@@ -47,12 +50,34 @@ function paint() {
     const type=pieces[rules.mp_tile(i)], img=cell.firstChild, frost=!!rules.mp_frost(i);
     const src='assets/'+type+'.png';
     if(img.getAttribute('src')!==src) img.src=src;
+    cell.classList.toggle('double-frost',rules.mp_frost(i)===2);
     cell.classList.toggle('frost',frost);cell.classList.toggle('selected',i===selected);cell.classList.toggle('hinted',hinted.includes(i));
     cell.setAttribute('aria-pressed',String(i===selected));
-    cell.setAttribute('aria-label','Row '+(1+Math.floor(i/6))+', column '+(i%6+1)+', '+type+(frost?', frosted':''));
+    cell.setAttribute('aria-label','Row '+(1+Math.floor(i/6))+', column '+(i%6+1)+', '+type+(rules.mp_frost(i)===2?', double frost':frost?', frosted':''));
   }
   $('moves').textContent=rules.mp_moves();$('panes').textContent=rules.mp_left();$('score').textContent=rules.mp_score();
+  $('mode').disabled=busy;
+  $('rewind').disabled=busy || !rules.mp_can_rewind();
   $('hint').disabled=busy||rules.mp_status()!==0;$('retry').disabled=busy;
+}
+function rewind() {
+  if (busy || !rules.mp_rewind()) return;
+  save.history.push('rewind');
+  persist();
+  selected=-1; hinted=[];
+  paint();
+  note('Last exchange undone. The board and its moves have been restored.');
+  cells.forEach(c=>c.classList.remove('drop','pop'));
+  ring(330);
+}
+$('rewind').onclick=rewind;
+
+function offerRewind() {
+  if (!rules.mp_can_rewind()) return;
+  const button=$('modalCancel');
+  button.hidden=false;
+  button.textContent='Undo last move';
+  button.onclick=()=>{ $('dialog').close(); rewind(); };
 }
 function finish() {
   if(rules.mp_status()===2) {
@@ -62,19 +87,22 @@ function finish() {
         save.restored=Math.max(save.restored,save.chapter+1);persist();journal();ring(784);
         if(last) complete();else loadChapter(save.chapter+1);
       });
+    offerRewind();
   } else if(rules.mp_status()===3) {
     modal('OUT OF MOVES','A fresh start',rules.mp_left()+' frosted panes remain. Try opening a line of four to sweep across the board.','Try again',()=>loadChapter(save.chapter));
+    offerRewind();
   }
 }
 function complete() {
   modal('SIX SECTIONS RESTORED','The glasshouse is open','Sunlight reaches the tide steps again. Your restoration is saved on this device.','Explore the pier',()=>{
+    $('rewind').disabled=true;
     note('All six sections restored. Restart a level to play again.');
     $('retry').textContent='↻   Replay campaign';$('retry').onclick=()=>loadChapter(0);
   });
 }
 function loadChapter(ch) {
-  save.chapter=ch;save.history=[];persist();rules.mp_start(ch);selected=-1;hinted=[];journal();paint();controls();
-  note('Match glass on the pale, striped panes to clear the frost.');
+  save.chapter=ch;save.history=[];persist();startBoard(ch);selected=-1;hinted=[];journal();paint();controls();
+  note(master?'Double rims mark two layers. A line sweep breaks both.':'Match glass on the pale, striped panes to clear the frost.');
 }
 function controls(){
   $('retry').textContent='↻   Restart level';
@@ -86,7 +114,16 @@ async function exchange(a,b) {
     paint(); cells[b].animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'none'}],{duration:150});
     note('Make a row or column of three. That swap cost no moves.');return;
   }
-  busy=true;save.history.push([a,b]);persist();paint();ring(392);
+  busy=true;
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const aBox=cells[a].getBoundingClientRect(), bBox=cells[b].getBoundingClientRect();
+    const dx=bBox.left-aBox.left, dy=bBox.top-aBox.top;
+    for (const [cell,x,y] of [[cells[a],dx,dy],[cells[b],-dx,-dy]]) {
+      cell.firstChild.animate([{transform:'translate('+x+'px,'+y+'px)'},{transform:'none'}],
+                              {duration:145,easing:'ease-out'});
+    }
+  }
+  save.history.push([a,b]);persist();paint();ring(392);await sleep(150);
   while(rules.mp_status()===1) {
     const chain=rules.mp_chain();
     note(rules.mp_sweeps()?'Line sweep!':chain>1?'Cascade ×'+chain:'Glass matched!');
@@ -130,17 +167,33 @@ for(let i=0;i<36;i++){
   cells.push(cell);$('board').append(cell);
 }
 $('hint').onclick=()=>{const h=rules.mp_hint();if(h<0)return;selected=-1;hinted=[Math.floor(h/36),h%36];paint();note('Swap the two outlined pieces.');};
-$('guide').onclick=()=>modal('HOW TO PLAY','The glazier’s guide','Tap two neighbouring pieces or swipe to swap. Match three over a striped pane to remove frost. Four or more sweep the entire line. Clear every pane before your moves run out. On a keyboard, use arrows and Space.','Back to the glass',null,true);
+$('guide').onclick=()=>modal('HOW TO PLAY','The glazier’s guide','Tap two neighbouring pieces or swipe to swap. Match three over a striped pane to remove frost. Four or more sweep the entire line. Clear every pane before your moves run out. You can undo one exchange per chapter, including its cascades. Use arrows and Space on a keyboard.','Back to the glass',null,true);
 $('sound').onclick=async()=>{try{audio??=new AudioContext();await audio.resume();sound=!sound;$('sound').setAttribute('aria-pressed',String(sound));$('sound').textContent=sound?'Sound on':'Sound off';ring(523);}catch{note('Audio is unavailable on this device.');}};
 try {
   const bytes=await (await fetch('pier.wasm')).arrayBuffer();
   rules=(await WebAssembly.instantiate(bytes,{})).instance.exports;
+  try { master=localStorage.getItem('mosaic-pier-mode')==='master'; } catch {}
+  loadJournal();
+
+}catch(e){note('The glass workshop could not load. Refresh to try again.');console.error(e);}
+
+function loadJournal() {
+  selected=-1;hinted=[];pointer=null;
+  save={chapter:0,restored:0,history:[]};
+  $('mode').textContent=master?'Return to story':'Play masterwork';
+  $('panes').nextElementSibling.textContent=master?'Frost layers':'Frosted panes';
   try{
-    const s=JSON.parse(localStorage.getItem(key));
+    const s=JSON.parse(localStorage.getItem(storageKey()));
     if(s&&Number.isInteger(s.chapter)&&s.chapter>=0&&s.chapter<6&&Number.isInteger(s.restored)&&s.restored>=0&&s.restored<=6&&Array.isArray(s.history))save=s;
   }catch{}
-  rules.mp_start(save.chapter);
-  const replay=[];for(const p of save.history.slice(0,40)){if(!Array.isArray(p)||p.length!==2||!p.every(Number.isInteger)||!rules.mp_swap(...p))break;while(rules.mp_status()===1)rules.mp_step();replay.push(p);}
-  save.history=replay;persist();journal();paint();controls();note('Match glass on the pale, striped panes to clear the frost.');
+  startBoard(save.chapter);
+  const replay=[];for(const p of save.history.slice(0,40)){if(p==='rewind'){if(!rules.mp_rewind())break;replay.push(p);continue;}if(!Array.isArray(p)||p.length!==2||!p.every(Number.isInteger)||!rules.mp_swap(...p))break;while(rules.mp_status()===1)rules.mp_step();replay.push(p);}
+  save.history=replay;persist();journal();paint();controls();note(master?'Double rims mark two layers. A line sweep breaks both.':'Match glass on the pale, striped panes to clear the frost.');
   if(save.restored===6&&save.chapter===5&&rules.mp_status()===2)complete();else finish();
-}catch(e){note('The glass workshop could not load. Refresh to try again.');console.error(e);}
+}
+$('mode').onclick=()=>{
+  if(busy || !rules) return;
+  master=!master;
+  try { localStorage.setItem('mosaic-pier-mode',master?'master':'story'); } catch {}
+  loadJournal();
+};

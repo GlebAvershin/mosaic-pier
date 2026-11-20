@@ -27,6 +27,7 @@ extern const Contract campaign[Chapters];
 
 extern "C" {
 int mp_start(int chapter);
+int mp_start_master(int chapter);
 int mp_tile(int cell);
 int mp_frost(int cell);
 int mp_clear(int cell);
@@ -41,5 +42,7 @@ int mp_status(); // 0 input, 1 resolving, 2 restored, 3 out of turns
 int mp_swap(int a, int b);
 int mp_step();
 int mp_hint(); // a * 36 + b, or -1
+int mp_can_rewind();
+int mp_rewind();
 int mp_count();
 }

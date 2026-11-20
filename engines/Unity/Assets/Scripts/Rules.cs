@@ -5,6 +5,8 @@ public static class Rules
     [DllImport("mosaic", CallingConvention = CallingConvention.Cdecl)]
     public static extern int mp_start(int chapter);
     [DllImport("mosaic", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int mp_start_master(int chapter);
+    [DllImport("mosaic", CallingConvention = CallingConvention.Cdecl)]
     public static extern int mp_tile(int cell);
     [DllImport("mosaic", CallingConvention = CallingConvention.Cdecl)]
     public static extern int mp_frost(int cell);
@@ -34,4 +36,8 @@ public static class Rules
     public static extern int mp_hint();
     [DllImport("mosaic", CallingConvention = CallingConvention.Cdecl)]
     public static extern int mp_count();
+    [DllImport("mosaic", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int mp_can_rewind();
+    [DllImport("mosaic", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int mp_rewind();
 }

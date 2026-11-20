@@ -7,12 +7,17 @@ using UnityEngine;
 public static class PierBuild {
   public static void Verify() {
     VerifyChapters(null);
+    VerifyChapters(null, true);
   }
-  public static void VerifyChapters(Action<int, int> chapterComplete) {
+  public static void VerifyChapters(Action<int, int> chapterComplete,
+                                    bool master = false) {
     if (Rules.mp_count() != 6)
       throw new Exception("Unexpected campaign size");
     for (int ch = 0; ch < 6; ch++) {
-      Rules.mp_start(ch);
+      if (master)
+        Rules.mp_start_master(ch);
+      else
+        Rules.mp_start(ch);
       int movesAtStart = Rules.mp_moves();
       while (Rules.mp_status() == 0) {
         int p = Rules.mp_hint();
@@ -31,17 +36,17 @@ public static class PierBuild {
     Verify();
     PlayerSettings.companyName = "Gleb Avershin";
     PlayerSettings.productName = "Mosaic Pier";
-    PlayerSettings.bundleVersion = "1.0.0";
+    PlayerSettings.bundleVersion = "1.1.0";
     PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone,
                                             "games.glebavershin.mosaicpier");
     PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
     PlayerSettings.runInBackground = true;
     PlayerSettings.defaultScreenWidth = 1000;
     PlayerSettings.defaultScreenHeight = 640;
-    PlayerSettings.SetIcons(
-        NamedBuildTarget.Unknown,
-        new[] { AssetDatabase.LoadAssetAtPath<Texture2D>(
-            "Assets/Resources/lagoon.png") }, IconKind.Any);
+    PlayerSettings.SetIcons(NamedBuildTarget.Unknown,
+                            new[] { AssetDatabase.LoadAssetAtPath<Texture2D>(
+                                "Assets/Resources/lagoon.png") },
+                            IconKind.Any);
     var target = Environment.GetEnvironmentVariable("MOSAIC_BUILD") ??
                  "Build/Mosaic Pier.app";
     var scenes = new[] { "Assets/Scenes/Pier.unity" };

@@ -38,6 +38,44 @@
       "score": 2320
     }
   ],
+  "commissions": [
+    {
+      "chapter": "Tide Steps",
+      "turns": 5,
+      "remaining": 3,
+      "score": 790
+    },
+    {
+      "chapter": "Brass Arcade",
+      "turns": 8,
+      "remaining": 3,
+      "score": 3370
+    },
+    {
+      "chapter": "Citrus Court",
+      "turns": 10,
+      "remaining": 3,
+      "score": 1260
+    },
+    {
+      "chapter": "Sea Lanterns",
+      "turns": 13,
+      "remaining": 3,
+      "score": 3910
+    },
+    {
+      "chapter": "The Sun Window",
+      "turns": 16,
+      "remaining": 3,
+      "score": 2990
+    },
+    {
+      "chapter": "Kingfisher Crown",
+      "turns": 20,
+      "remaining": 3,
+      "score": 2340
+    }
+  ],
   "viewport": [
     1320,
     850
@@ -49,6 +87,9 @@
   "checks": [
     "six restorations",
     "keyboard match",
+    "one-use rewind across reload",
+    "identical refill after rewind",
+    "double frost and independent journals",
     "invalid swap",
     "saved board replay",
     "completed campaign reload",

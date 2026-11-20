@@ -12,12 +12,19 @@ static class PierWorkshop
         if (EditorApplication.isPlayingOrWillChangePlaymode)
             throw new InvalidOperationException("Stop Play Mode before replaying the campaign.");
 
+        var chapters = Run(false);
+        var commissions = Run(true);
+        cmd.Result.Write(new { editor = Application.unityVersion, chapters, commissions });
+        return ExitCode.Success;
+    }
+
+    static List<object> Run(bool master)
+    {
         var chapters = new List<object>();
         PierBuild.VerifyChapters((chapter, turns) => chapters.Add(new {
             chapter, turns, spare = Rules.mp_moves(), score = Rules.mp_score(),
             panes_left = Rules.mp_left()
-        }));
-        cmd.Result.Write(new { editor = Application.unityVersion, chapters });
-        return ExitCode.Success;
+        }), master);
+        return chapters;
     }
 }

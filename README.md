@@ -2,21 +2,21 @@
 
 A seaside glasshouse has lost its colour. Swap pieces of stained glass, clear the frost and restore six sections of the pier, from the tide steps to the kingfisher at the top of the cupola.
 
-**[Play in your browser](https://glebavershin.github.io/mosaic-pier/)** · [Download for macOS](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.0.0) · [Watch a playthrough](docs/evidence/playthrough.mp4) · [Технологии и результаты](docs/TECHNOLOGIES.md)
+**[Play in your browser](https://glebavershin.github.io/mosaic-pier/)** · [Download for macOS](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.0) · [Watch a playthrough](docs/evidence/playthrough.mp4) · [Технологии и результаты](docs/TECHNOLOGIES.md)
 
-![The first chapter of Mosaic Pier with the glasshouse and the playable board](docs/evidence/workshop.jpg)
+![The first chapter of Mosaic Pier with the kingfisher window and the playable board](docs/evidence/workshop.jpg)
 
 ## Playing
 
-Swap two neighbouring pieces by tapping each piece or swiping. Match three over a striped pane to clear it. Four or more in a row or column sweep the entire line. Each chapter has a move budget. Illegal swaps are free. The hint previews a legal move. In the browser, arrow keys move focus and Space selects a piece. In the Unity player, H highlights a pair and sets the keyboard cursor on its first piece. The browser and Unity save progress on the device.
+Swap two neighbouring pieces by tapping each piece or swiping. Match three over a frosted pane to clear it. Four or more in a row or column sweep the entire line. Each chapter has a move budget. Illegal swaps are free. The hint previews a legal move. In the browser, arrow keys move focus and Space selects a piece. In the Unity player, H highlights a pair and sets the keyboard cursor on its first piece. Choose **Play masterwork** for six more demanding commissions. A double rim marks two layers of frost. A normal match chips one layer. A line sweep clears both. **Undo move** rewinds one exchange per attempt, including all refills and cascades. Each mode has its own journal on the device. In Unity, Z undoes a move and the Motion switch reduces animation.
 
 ## Inside the game
 
 | Component | What you can inspect |
 | --- | --- |
-| [C++17 rules](core/pier.cpp) | A seeded 6×6 board, horizontal and vertical matches, simultaneous clears, cascades, dead-board recovery and one-move lookahead. All clients use the same six level contracts. |
+| [C++17 rules](core/pier.cpp) | A seeded 6×6 board, horizontal and vertical matches, simultaneous clears, cascades, dead-board recovery and one-move lookahead. The story and masterwork commissions have six seeded contracts each. |
 | [Browser client](web) | The C++ rules compiled to WebAssembly, responsive controls, reduced motion, synthesized glass chimes and move-history replay. [Mobile screenshot](docs/evidence/mobile.jpg) |
-| [Unity project](engines/Unity) | Unity 2022.3.62f1, C# presentation, coroutine animation and a native C++ plug-in. The universal macOS player passed all six chapters. [Player screenshot](docs/evidence/unity-player.jpg) · [Player replay](docs/evidence/unity-player.csv) |
+| [Unity project](engines/Unity) | Unity 2022.3.62f1, C# presentation, coroutine animation and a native C++ plug-in. The universal macOS player completed all twelve boards. [Player screenshot](docs/evidence/unity-player.jpg) · [Player replay](docs/evidence/unity-player.csv) |
 | [Unreal Engine project](engines/Unreal) | UE 5.5 C++ game module, game mode, Canvas HUD, hit boxes, staged textures and an automation test. Delivered as source. Editor compilation and playtesting are pending. |
 | [AI level workshop](studio/agent_review.py) | The model chooses between measured candidates, then an MCP tool reruns the game simulation. Codex and Gemini selected the finale shipped in the campaign. [Codex](docs/evidence/codex.json) · [Gemini](docs/evidence/gemini.json) |
 | [AI layout review](studio/layout_review.py) | Chromium measured three layouts at six viewport sizes. Qwen selected the board-first mobile layout and the verifier checked the interaction targets. [Decision](docs/evidence/layout.json) |
@@ -28,7 +28,9 @@ Swap two neighbouring pieces by tapping each piece or swiping. Match three over 
 
 **Unity.** Open `engines/Unity` in Unity 2022.3.62f1, open `Assets/Scenes/Pier.unity` and press Play. The macOS plug-in is included. On Linux run `tools/unity-plugin.sh` first. For a standalone macOS build, set `MOSAIC_BUILD` to an absolute output path ending in `.app` and call the editor with `-batchmode -nographics -quit -projectPath <absolute Unity project directory> -executeMethod PierBuild.Mac`.
 
-**Unity editor MCP.** On macOS with Unity CLI 1.0.0 on `PATH` and editor 6000.6.10f1 installed, run `studio/unity/start-workshop.sh`. It opens an isolated copy with Unity Pipeline 1.0.1. Pass the printed project path to `uv run --script studio/unity/replay.py "<workshop path>"` to replay six chapters in the editor and compare each result with the released player. Close that copy with `unity close "<workshop path>"`. [Recorded MCP response](docs/evidence/unity-mcp.json)
+**Unity editor MCP.** On macOS with Unity CLI 1.0.0 on `PATH` and editor 6000.6.10f1 installed, run `studio/unity/start-workshop.sh`. It opens an isolated copy with Unity Pipeline 1.0.1. Pass the printed project path to `uv run --script studio/unity/replay.py "<workshop path>"` to replay both six-chapter journals in the editor and compare each result with the released player. Close that copy with `unity close "<workshop path>"`. [Recorded MCP response](docs/evidence/unity-mcp.json)
+
+Package the built player with its font license using `tools/package-macos.sh "<path>/Mosaic Pier.app" "<path>/Mosaic-Pier-1.1-macOS.zip"`.
 
 **Unreal.** Keep the checkout intact so Unreal Build Tool can find the shared `core` directory. Open `engines/Unreal/MosaicPier.uproject` with UE 5.5 and build the MosaicPierEditor target. Play uses the engine's Entry map and the game's native HUD. The Automation window exposes `MosaicPier.Gameplay.Campaign`.
 
@@ -50,4 +52,4 @@ uv run --project build/platform/studio --locked python studio/account_review.py 
 
 Substitute `codex` for the final argument to use the Codex CLI. For the responsive layout decision, `tools/layout-probe.py` measures candidates against the running browser game. The [Level workshop workflow](.github/workflows/workshop.yml) runs both MCP adapters on GitHub-hosted Kubernetes clusters with Qwen and SmolLM2. Each cluster is removed after its measurements are attached.
 
-The glasshouse illustration was generated for this project. The five silhouettes and their facets are rendered by the [original sprite generator](tools/glass.py). The web edition uses Cormorant Garamond under its [SIL Open Font License](web/assets/OFL.txt).
+The kingfisher window was generated for this project with ImageGen. The five silhouettes and their facets are rendered by the [original sprite generator](tools/glass.py). The web and Unity editions use Cormorant Garamond under its [SIL Open Font License](web/assets/OFL.txt).

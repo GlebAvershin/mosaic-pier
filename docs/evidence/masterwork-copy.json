@@ -1,0 +1,16 @@
+{
+  "provider": "Gemini CLI account adapter",
+  "requested_model": "gemini-3.8-flash-low",
+  "brief": {
+    "task": "Choose a short onboarding line for the optional Masterwork mode. The first-time player already knows match-three; double-rimmed cells have two layers of frost. An ordinary match clears one layer; a four-in-line sweep removes both. The text must teach both the visual cue and strategic alternative, fit a single short status line or two lines on a phone, and avoid promising four matching on each target cell.",
+    "options": {
+      "material": "Double rims mark two layers. A line sweep breaks both.",
+      "controls": "Tap a pane or swipe a neighbouring colour.",
+      "economy": "You can undo your previous exchange once per chapter."
+    }
+  },
+  "decision": {
+    "choice": "material",
+    "reason": "It is the only option that explains both the visual double-rim cue and the line sweep mechanic for clearing both layers within a concise status line."
+  }
+}

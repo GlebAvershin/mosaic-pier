@@ -27,6 +27,30 @@ int main() {
       }
     }
   }
+  // Restore the RNG as well as the visible board, even after an invalid swap.
+  for (int ch = 0; ch < mp_count(); ++ch) {
+    mp_start(ch);
+    int pair = mp_hint(), moves = mp_moves(), initial[36], settled[36];
+    for (int i = 0; i < 36; ++i)
+      initial[i] = mp_tile(i);
+    assert(!mp_rewind() && mp_swap(pair / 36, pair % 36));
+    assert(!mp_rewind());
+    while (mp_status() == 1)
+      mp_step();
+    int score = mp_score(), left = mp_left();
+    for (int i = 0; i < 36; ++i)
+      settled[i] = mp_tile(i);
+    assert(!mp_swap(-1, 2) && mp_rewind() && !mp_can_rewind());
+    assert(mp_score() == 0 && mp_moves() == moves && mp_hint() == pair);
+    for (int i = 0; i < 36; ++i)
+      assert(initial[i] == mp_tile(i));
+    assert(mp_swap(pair / 36, pair % 36));
+    while (mp_status() == 1)
+      mp_step();
+    for (int i = 0; i < 36; ++i)
+      assert(settled[i] == mp_tile(i));
+    assert(mp_score() == score && mp_left() == left && !mp_rewind());
+  }
   int lost = 0;
   for (int ch = 0; ch < mp_count(); ch++) {
     mp_start(ch);
@@ -55,4 +79,35 @@ int main() {
     }
   }
   assert(lost > 0);
+  int turns[] = {5, 8, 10, 13, 16, 20};
+  for (int ch = 0; ch < mp_count(); ++ch) {
+    assert(mp_start_master(ch));
+    int initial = mp_moves(), played = 0;
+    while (mp_status() == 0) {
+      int pair = mp_hint();
+      assert(pair >= 0 && mp_swap(pair / 36, pair % 36));
+      while (mp_status() == 1) {
+        int before[36], clear[36];
+        for (int i = 0; i < 36; ++i) {
+          before[i] = mp_frost(i);
+          clear[i] = mp_clear(i);
+        }
+        mp_step();
+        int layers = 0;
+        for (int i = 0; i < 36; ++i) {
+          int expected = before[i];
+          if (clear[i] == 2)
+            expected = 0;
+          else if (clear[i] && expected)
+            --expected;
+          assert(mp_frost(i) == expected);
+          layers += expected;
+        }
+        assert(layers == mp_left());
+      }
+      ++played;
+    }
+    assert(mp_status() == 2 && played == turns[ch] && initial - played == 3);
+    std::printf("master %d %d %d\n", ch, mp_moves(), mp_score());
+  }
 }

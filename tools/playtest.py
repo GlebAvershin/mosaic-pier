@@ -52,6 +52,34 @@ def main():
         before=number(page,"moves")
         board(page).nth(a).click();board(page).nth(b).click()
         assert number(page,"moves")==before
+        # A consumed rewind must survive reload, including the RNG behind refills.
+        initial=board(page).evaluate_all("(xs)=>xs.map(e=>e.ariaLabel)")
+        choose_hint(page)
+        after=board(page).evaluate_all("(xs)=>xs.map(e=>e.ariaLabel)")
+        page.locator("#rewind").click()
+        assert number(page,"moves")==before and number(page,"score")==0
+        page.reload()
+        page.wait_for_function("!document.querySelector('#hint').disabled")
+        assert page.locator("#rewind").is_disabled()
+        assert board(page).evaluate_all("(xs)=>xs.map(e=>e.ariaLabel)")==initial
+        choose_hint(page)
+        assert board(page).evaluate_all("(xs)=>xs.map(e=>e.ariaLabel)")==after
+        assert page.locator("#rewind").is_disabled()
+        page.locator("#retry").click()
+        page.locator("#modalAction").click()
+        page.locator("#mode").click()
+        assert "MASTERWORK" in page.locator("#chapterNo").inner_text()
+        assert page.locator(".double-frost").count()==3
+        choose_hint(page)
+        master_state=board(page).evaluate_all("(xs)=>xs.map(e=>e.ariaLabel)")
+        page.locator("#mode").click()
+        assert number(page,"moves")==before and number(page,"score")==0
+        page.locator("#mode").click()
+        assert board(page).evaluate_all("(xs)=>xs.map(e=>e.ariaLabel)")==master_state
+        page.reload()
+        page.wait_for_function("!document.querySelector('#hint').disabled")
+        assert "MASTERWORK" in page.locator("#chapterNo").inner_text()
+        page.locator("#mode").click()
         chapters=[]
         for ch in range(6):
             title=page.locator("#chapter").inner_text()
@@ -71,6 +99,20 @@ def main():
         page.locator("#modalAction").click()
         assert page.locator("#progress").inner_text()=="6 of 6 sections restored"
         page.reload();page.get_by_text("The glasshouse is open",exact=True).wait_for()
+        page.locator("#modalAction").click()
+        page.locator("#mode").click()
+        page.locator("#retry").click()
+        page.locator("#modalAction").click()
+        commissions=[]
+        for expected in [5,8,10,13,16,20]:
+            title=page.locator("#chapter").inner_text()
+            for _ in range(expected):
+                choose_hint(page)
+            assert page.locator("#modalAction").inner_text()=="Restore "+title
+            assert number(page,"panes")==0 and number(page,"moves")==3
+            commissions.append({"chapter":title,"turns":expected,"remaining":3,"score":number(page,"score")})
+            page.locator("#modalAction").click()
+        assert page.locator("#modalTitle").inner_text()=="The glasshouse is open"
         mobile=browser.new_context(viewport={"width":390,"height":844},device_scale_factor=1,is_mobile=True,has_touch=True,reduced_motion="reduce")
         m=mobile.new_page();m.on("pageerror",lambda e:errors.append(str(e)))
         m.goto(args.url);m.wait_for_function("!document.querySelector('#hint').disabled")
@@ -84,8 +126,8 @@ def main():
         m.wait_for_function("Number(document.querySelector('#score').textContent)>0")
         assert number(m,"moves")==9
         assert not errors,errors
-        (args.out/"browser.json").write_text(json.dumps({"engine":browser.version,"chapters":chapters,"viewport":[1320,850],
-            "mobile_viewport":[390,844],"checks":["six restorations","keyboard match","invalid swap","saved board replay","completed campaign reload","sound control","guide","touch swipe","mobile overflow"],"page_errors":errors},indent=2)+"\n")
+        (args.out/"browser.json").write_text(json.dumps({"engine":browser.version,"chapters":chapters,"commissions":commissions,"viewport":[1320,850],
+            "mobile_viewport":[390,844],"checks":["six restorations","keyboard match","one-use rewind across reload","identical refill after rewind","double frost and independent journals","invalid swap","saved board replay","completed campaign reload","sound control","guide","touch swipe","mobile overflow"],"page_errors":errors},indent=2)+"\n")
         browser.close()
 if __name__=="__main__":
     main()
