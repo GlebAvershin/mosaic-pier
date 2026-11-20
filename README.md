@@ -20,7 +20,7 @@ Swap two neighbouring pieces by tapping each piece or swiping. Match three over 
 | [Unreal Engine project](engines/Unreal) | UE 5.5 C++ game module, game mode, Canvas HUD, hit boxes, staged textures and an automation test. Delivered as source. Editor compilation and playtesting are pending. |
 | [AI level workshop](studio/agent_review.py) | The model chooses between measured candidates, then an MCP tool reruns the game simulation. Codex and Gemini selected the finale shipped in the campaign. [Codex](docs/evidence/codex.json) · [Gemini](docs/evidence/gemini.json) |
 | [AI layout review](studio/layout_review.py) | Chromium measured three layouts at six viewport sizes. Qwen selected the board-first mobile layout and the verifier checked the interaction targets. [Decision](docs/evidence/layout.json) |
-| [Cloud CI](.github/workflows/workshop.yml) | Two Kubernetes replicas, two llama.cpp model routes, FastAPI and a shared PostgreSQL cache. The free-standing CI run also captured a PR review and local Sentry and Amplitude SDK events. [Measured run](docs/evidence/cloud.json) |
+| [Cloud CI](.github/workflows/workshop.yml) | Two Kubernetes replicas, two llama.cpp model routes, FastAPI and a shared PostgreSQL cache. The on-demand CI run also captured a PR review and local Sentry and Amplitude SDK events. [Level review](docs/evidence/cloud.json) · [Cloud UI layout review](docs/evidence/cloud-layout.json) |
 
 ## Running from source
 

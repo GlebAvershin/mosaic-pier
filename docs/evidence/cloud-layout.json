@@ -1,0 +1,1042 @@
+{
+  "run": "https://github.com/GlebAvershin/mosaic-pier/actions/runs/44780935143",
+  "revision": "80a129d8e8beea4694289d12f17ac8ae126ea980",
+  "requests": {
+    "project": "mosaic-layout",
+    "unauthorized_status": 401,
+    "negative_control": {
+      "choice": "compact_split",
+      "verdict": {
+        "accepted": false,
+        "failed_widths": [
+          600,
+          750
+        ],
+        "viewports": 6
+      }
+    },
+    "fresh": {
+      "cache": {
+        "miss": 2,
+        "hit": 6
+      },
+      "tokens": 925,
+      "model_calls": 4,
+      "p50_ms": 3755.3450000000003,
+      "p95_ms": 4442.04,
+      "responses": [
+        {
+          "result": {
+            "choice": "board_first",
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "failed_widths": [],
+                  "viewports": 6
+                }
+              }
+            ],
+            "tokens": 207
+          },
+          "cache": "miss",
+          "inference_tokens": 207,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 3067.21
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 3068.56
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 4442.04
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "failed_widths": [
+                    600,
+                    750
+                  ],
+                  "viewports": 6
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ],
+                  "viewports": 6
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "failed_widths": [],
+                  "viewports": 6
+                }
+              }
+            ],
+            "tokens": 718
+          },
+          "cache": "miss",
+          "inference_tokens": 718,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 4435.33
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 3075.36
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 3074.84
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 4438.92
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 4439.74
+        }
+      ]
+    },
+    "repeat": {
+      "cache": {
+        "hit": 8
+      },
+      "tokens": 0,
+      "model_calls": 0,
+      "p50_ms": 47.815,
+      "p95_ms": 53.22,
+      "responses": [
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 39.29
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 46.52
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 39.46
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 49.11
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 50.27
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 53.22
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-d29bx",
+          "client_ms": 43.85
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-qxwqz",
+          "client_ms": 51.68
+        }
+      ]
+    },
+    "other_team": {
+      "result": {
+        "choice": "board_first",
+        "history": [
+          {
+            "choice": "board_first",
+            "verdict": {
+              "accepted": true,
+              "failed_widths": [],
+              "viewports": 6
+            }
+          }
+        ],
+        "tokens": 207
+      },
+      "cache": "miss",
+      "inference_tokens": 207,
+      "model": "qwen",
+      "worker": "game-review-5d68c4557b-qxwqz",
+      "client_ms": 270.34
+    }
+  },
+  "restored": {
+    "project": "mosaic-layout",
+    "unauthorized_status": 401,
+    "negative_control": {
+      "choice": "compact_split",
+      "verdict": {
+        "accepted": false,
+        "failed_widths": [
+          600,
+          750
+        ],
+        "viewports": 6
+      }
+    },
+    "restored": {
+      "cache": {
+        "hit": 8
+      },
+      "tokens": 0,
+      "model_calls": 0,
+      "p50_ms": 65.225,
+      "p95_ms": 68.72,
+      "responses": [
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-6886855889-gzl4x",
+          "client_ms": 43.16
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-6886855889-kwpqk",
+          "client_ms": 68.72
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-6886855889-gzl4x",
+          "client_ms": 66.52
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-6886855889-kwpqk",
+          "client_ms": 64.88
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-6886855889-gzl4x",
+          "client_ms": 49.14
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 207,
+            "history": [
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-6886855889-kwpqk",
+          "client_ms": 62.02
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-6886855889-gzl4x",
+          "client_ms": 65.57
+        },
+        {
+          "result": {
+            "choice": "board_first",
+            "tokens": 718,
+            "history": [
+              {
+                "choice": "compact_split",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "journal_first",
+                "verdict": {
+                  "accepted": false,
+                  "viewports": 6,
+                  "failed_widths": [
+                    360,
+                    600,
+                    750
+                  ]
+                }
+              },
+              {
+                "choice": "board_first",
+                "verdict": {
+                  "accepted": true,
+                  "viewports": 6,
+                  "failed_widths": []
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-6886855889-kwpqk",
+          "client_ms": 68.0
+        }
+      ]
+    },
+    "other_team": {
+      "result": {
+        "choice": "board_first",
+        "tokens": 207,
+        "history": [
+          {
+            "choice": "board_first",
+            "verdict": {
+              "accepted": true,
+              "viewports": 6,
+              "failed_widths": []
+            }
+          }
+        ]
+      },
+      "cache": "hit",
+      "inference_tokens": 0,
+      "model": "qwen",
+      "worker": "game-review-6886855889-kwpqk",
+      "client_ms": 13.86
+    }
+  },
+  "layout-metrics": {
+    "board_first": [
+      {
+        "w": 360,
+        "h": 740,
+        "tile": 46,
+        "controls_bottom": 612,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 390,
+        "h": 844,
+        "tile": 51,
+        "controls_bottom": 642,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 600,
+        "h": 800,
+        "tile": 66,
+        "controls_bottom": 734,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 750,
+        "h": 800,
+        "tile": 66,
+        "controls_bottom": 734,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 1024,
+        "h": 768,
+        "tile": 61,
+        "controls_bottom": 753,
+        "overflow": 0,
+        "side_by_side": true
+      },
+      {
+        "w": 1320,
+        "h": 850,
+        "tile": 66,
+        "controls_bottom": 808,
+        "overflow": 0,
+        "side_by_side": true
+      }
+    ],
+    "journal_first": [
+      {
+        "w": 360,
+        "h": 740,
+        "tile": 46,
+        "controls_bottom": 792,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 390,
+        "h": 844,
+        "tile": 51,
+        "controls_bottom": 822,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 600,
+        "h": 800,
+        "tile": 66,
+        "controls_bottom": 914,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 750,
+        "h": 800,
+        "tile": 66,
+        "controls_bottom": 914,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 1024,
+        "h": 768,
+        "tile": 61,
+        "controls_bottom": 753,
+        "overflow": 0,
+        "side_by_side": true
+      },
+      {
+        "w": 1320,
+        "h": 850,
+        "tile": 66,
+        "controls_bottom": 808,
+        "overflow": 0,
+        "side_by_side": true
+      }
+    ],
+    "compact_split": [
+      {
+        "w": 360,
+        "h": 740,
+        "tile": 46,
+        "controls_bottom": 612,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 390,
+        "h": 844,
+        "tile": 51,
+        "controls_bottom": 642,
+        "overflow": 0,
+        "side_by_side": false
+      },
+      {
+        "w": 600,
+        "h": 800,
+        "tile": 33,
+        "controls_bottom": 637,
+        "overflow": 0,
+        "side_by_side": true
+      },
+      {
+        "w": 750,
+        "h": 800,
+        "tile": 43,
+        "controls_bottom": 661,
+        "overflow": 0,
+        "side_by_side": true
+      },
+      {
+        "w": 1024,
+        "h": 768,
+        "tile": 61,
+        "controls_bottom": 753,
+        "overflow": 0,
+        "side_by_side": true
+      },
+      {
+        "w": 1320,
+        "h": 850,
+        "tile": 66,
+        "controls_bottom": 808,
+        "overflow": 0,
+        "side_by_side": true
+      }
+    ]
+  }
+}

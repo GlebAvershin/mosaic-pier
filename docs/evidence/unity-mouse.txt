@@ -1,0 +1,7 @@
+Unity Editor 2022.3.62f1 / GameView.SendEvent / Apple Silicon
+Tide Steps, cells 11 then 17 (zero-based). Start with 10 moves.
+MOSAIC_RAW mouseDown (1778.00, 431.95) sw 2000 sh 1278
+MOSAIC_RAW mouseUp (1778.00, 431.95) sw 2000 sh 1278
+MOSAIC_RAW mouseDown (1778.00, 552.06) sw 2000 sh 1278
+MOSAIC_RAW mouseUp (1778.00, 552.06) sw 2000 sh 1278
+MOSAIC_POINTER_RESULT True moves 9
