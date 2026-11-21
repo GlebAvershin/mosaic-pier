@@ -19,7 +19,7 @@ Verification was executed via the AWS Agent Toolkit managed MCP server tool (`aw
 
 ## ☁️ Cross-Service Verification via Cloud MCP Servers
 
-1. **Amplitude MCP:** Retrieved 6 `game.study_evaluated` events filtered by game ID for November 20, 2026 (UTC).
+1. **Amplitude MCP:** Retrieved 6 `game.study_evaluated` events filtered by game ID during research evaluation runs.
 2. **Sentry MCP:** Queried issue **PYTHON-6** by event ID, verifying the `near_miss_spill` trigger and `adjust_budget` action.
 3. **Databricks MCP (`system.ai.dbsql`):** Queried production balance tables via SQL. All 4 returned rows matched local SQLite results byte-for-byte.
 
