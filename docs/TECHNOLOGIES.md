@@ -173,14 +173,14 @@ GitHub Actions на Linux поднимает отдельный кластер k
 | 5 | 14 | 75.80% [71.86%, 79.35%] | 76.80% [72.90%, 80.29%] | +1.00 п. п. | 97.41% (узкое место) |
 | 6 | 22 | 89.20% [86.19%, 91.64%] | 90.40% [87.52%, 92.70%] | +1.20 п. п. | 94.44% (финал сюжета) |
 
-Симуляция 6 000 досок на чистом C++17 завершилась за 0.42 секунды. Все главы уложились в целевой коридор удержания Playrix (75–90%). Глава 5 идентифицирована как потенциальное узкое место (Win Rate 75.80%), где DDA-ассист обеспечивает необходимую компенсацию без разрушения сложности. [C++ движок](../tools/dda_balancer.cpp) · [Сырые результаты](evidence/dda-campaign-study.json)
+Симуляция 6 000 досок на чистом C++17 завершилась за 0.42 секунды. Все главы уложились в целевой коридор удержания (75–90%). Глава 5 идентифицирована как потенциальное узкое место (Win Rate 75.80%), где DDA-ассист обеспечивает необходимую компенсацию без разрушения сложности. [C++ движок](../tools/dda_balancer.cpp) · [Сырые результаты](evidence/dda-campaign-study.json)
 
 ### Match-3 AI MCP Server и Databricks Model Serving
 
 В `studio/match3_mcp.py` развернут FastMCP сервер, предоставляющий агентам и левел-дизайнерам три инструмента:
 1. `evaluate_dda_campaign(boards_per_chapter)` — прямое исполнение нативного C++17 симулятора.
-2. `consult_ai_balancer(chapter, budget, panes, win_rate)` — онлайн-запрос к эндпоинту `databricks-qwen3-next-80b-a3b-instruct` через Databricks Model Serving. При обращении для главы 5 модель сформировала профессиональную рекомендацию левел-дизайнеру Playrix по расширению бюджета ходов с 14 до 16 для предотвращения оттока игроков на D3.
-3. `record_level_telemetry(chapter, metric, value)` — сквозная отправка событий в Amplitude (`match3.win_rate`) и алертов в Sentry (`portfolio-qa`). [Код сервера](../studio/match3_mcp.py) · [Unit-тесты](../studio/test_match3_mcp.py) · [Журнал телеметрии](evidence/telemetry_events.jsonl)
+2. `consult_ai_balancer(chapter, budget, panes, win_rate)` — онлайн-запрос к эндпоинту `databricks-qwen3-next-80b-a3b-instruct` через Databricks Model Serving. При обращении для главы 5 модель сформировала профессиональную рекомендацию левел-дизайнеру по расширению бюджета ходов с 14 до 16 для предотвращения оттока игроков на D3.
+3. `record_level_telemetry(chapter, metric, value)` — сквозная отправка событий в Amplitude (`match3.win_rate`) и алертов в Sentry (`qa-telemetry`). [Код сервера](../studio/match3_mcp.py) · [Unit-тесты](../studio/test_match3_mcp.py) · [Журнал телеметрии](evidence/telemetry_events.jsonl)
 
 ### Анализ пространственных узких мест: Тепловая карта фрустрации (Tile Frustration Index)
 

@@ -70,9 +70,9 @@ def evaluate_campaign(seeds_per_chapter: int = 64) -> str:
 
 @mcp.tool()
 def consult_ai_balancer(chapter: int, current_budget: int, panes: int, win_rate: float) -> str:
-    """Consult Playrix-grade Game Economy & Balance AI via Databricks Model Serving or deterministic heuristics."""
+    """Consult Game Economy & Balance AI via Databricks Model Serving or deterministic heuristics."""
     prompt = (
-        f"You are a Senior Match-3 Level Designer at Playrix. Chapter {chapter} currently has {panes} frozen panes "
+        f"You are a Senior Match-3 Level Designer. Chapter {chapter} currently has {panes} frozen panes "
         f"and a budget of {current_budget} moves. Simulated AI Bot Win Rate is {win_rate * 100:.1f}%. "
         f"Target casual audience win rate is 80-85%. Recommend exact move budget adjustment and difficulty curve advice. "
         f"Answer concisely in Russian in 3 sentences."
@@ -102,7 +102,7 @@ def consult_ai_balancer(chapter: int, current_budget: int, panes: int, win_rate:
         return (f"Глава {chapter} проходится слишком легко ({win_rate*100:.1f}% побед). "
                 f"Рекомендуется сократить бюджет с {current_budget} до {recommended} ходов для создания вызова.")
     else:
-        return (f"Глава {chapter} находится в идеальном балансе Playrix ({win_rate*100:.1f}% побед). "
+        return (f"Глава {chapter} находится в идеальном балансе ({win_rate*100:.1f}% побед). "
                 f"Текущий бюджет в {current_budget} ходов сохраняет оптимальный уровень вовлечения без фрустрации.")
 
 
@@ -114,7 +114,7 @@ def record_level_telemetry(chapter: int, metric_name: str, value: float) -> str:
         "game": "Mosaic Pier",
         "chapter": chapter,
         "value": value,
-        "sentry_env": "portfolio-qa",
+        "sentry_env": "qa-telemetry",
         "amplitude_schema": "game.study_evaluated"
     }
     log_path = ROOT / "docs/evidence/telemetry_events.jsonl"

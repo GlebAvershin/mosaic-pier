@@ -32,7 +32,7 @@
 
 ## 📖 Overview
 
-**Mosaic Pier** is a casual tile-matching puzzle game inspired by Playrix classics (*Homescapes*, *Gardenscapes*). Players restore an abandoned seaside conservatory by swapping stained glass fragments, clearing frosted tiles, and assembling a stained-glass kingfisher mosaic across 6 story chapters and 6 Masterwork challenges.
+**Mosaic Pier** is a casual tile-matching puzzle game. Players restore an abandoned seaside conservatory by swapping stained glass fragments, clearing frosted tiles, and assembling a stained-glass kingfisher mosaic across 6 story chapters and 6 Masterwork challenges.
 
 Behind the relaxed casual exterior lies a production-grade **C++17 core engine** shared across WebAssembly and Unity, backed by an **AI-driven level difficulty calibration system**, **spatial frustration heatmap analyzers**, and **Model Context Protocol (MCP)** level-design tools.
 
@@ -54,7 +54,7 @@ flowchart TD
         Unreal["Unreal Engine 5.5 MacOS Game Module"]
     end
 
-    subgraph AITooling["Playrix-Grade AI & Analytics Pipeline"]
+    subgraph AITooling["Production AI & Analytics Pipeline"]
         DDA["C++17 DDA Balancer (6,000 Board Monte Carlo)"]
         Heatmap["Spatial Bottleneck Heatmap (Tile Frustration Index)"]
         MCP["Match-3 FastMCP Server (studio/match3_mcp.py)"]
@@ -75,7 +75,7 @@ flowchart TD
 | Component | Technical Implementation | Empirical Verification |
 | :--- | :--- | :--- |
 | **C++17 Core Engine** | Deterministic 6×6 match-3 logic, cascading sweeps, double-frost layers, and undo stack. | Clean execution under `-fsanitize=address,undefined`. Native vs WASM diff: **0 bytes deviation**. |
-| **Monte Carlo DDA Simulator** | Simulates 6,000 player sessions (500 seeds × 6 chapters) with Dynamic Difficulty Adjustment (+2 moves on loss). | Calibrated difficulty curve within Playrix retention band (**75.8% to 88.6% Win Rate** with 95% Wilson CIs). |
+| **Monte Carlo DDA Simulator** | Simulates 6,000 player sessions (500 seeds × 6 chapters) with Dynamic Difficulty Adjustment (+2 moves on loss). | Calibrated difficulty curve within industry-standard casual retention band (**75.8% to 88.6% Win Rate** with 95% Wilson CIs). |
 | **Spatial Bottleneck Heatmap** | Computes the **Tile Frustration Index ($TFI_{x,y}$)** across 2,000 runs to isolate unfair level geometry. | Identified bottom corners `(0, 5)` and `(5, 5)` as responsible for **28.72% of defeats** ($TFI=0.2872$). |
 | **Match-3 FastMCP Server** | Stdio MCP protocol server exposing level simulations and AI consulting to agentic IDEs. | Unit tested (3/3 OK). Live Databricks AI recommendations for chapter 5 move rebalancing. |
 | **Cross-Platform Delivery** | Compiled to WASM for web, packaged as C# plugin for Unity, and automated via Unity MCP. | macOS app tested on 12 contracts. Verified under Chromium responsive viewports (360px–1320px). |
@@ -159,5 +159,5 @@ Mosaic Pier/
 ---
 
 <p align="center">
-  <sub>Built with precision for the Playrix Game AI & Cross-Product Engineering tracks.</sub>
+  <sub>Open-source game engineering and AI balancing study.</sub>
 </p>
