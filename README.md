@@ -25,7 +25,7 @@
 
 * 🌐 **[Play in Browser (WebAssembly)](https://glebavershin.github.io/mosaic-pier/)** — Zero-install responsive gameplay.
 * 🍏 **[Download macOS Unity Player (v1.1.1)](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.1)** — Universal native build.
-* 🎥 **[Watch Gameplay Demonstration](docs/evidence/playthrough.mp4)** — Full 6-chapter walkthrough video.
+* 🎥 **[Watch Gameplay Demonstration (MP4)](https://raw.githubusercontent.com/GlebAvershin/mosaic-pier/main/docs/evidence/playthrough.mp4)** — Full 6-chapter walkthrough video.
 * 📑 **[Engineering & AI Deep Dive](docs/TECHNOLOGIES.md)** — Production benchmarks, C++ sanitizers, and telemetry receipts.
 
 ---
@@ -35,6 +35,12 @@
 **Mosaic Pier** is a casual tile-matching puzzle game. Players restore an abandoned seaside conservatory by swapping stained glass fragments, clearing frosted tiles, and assembling a stained-glass kingfisher mosaic across 6 story chapters and 6 Masterwork challenges.
 
 Behind the relaxed casual exterior lies a production-grade **C++17 core engine** shared across WebAssembly and Unity, backed by an **AI-driven level difficulty calibration system**, **spatial frustration heatmap analyzers**, and **Model Context Protocol (MCP)** level-design tools.
+
+---
+
+<p align="center">
+  <img src="docs/evidence/playthrough-preview.gif" alt="Mosaic Pier Gameplay Preview" width="85%" style="border-radius: 6px;" />
+</p>
 
 ---
 

@@ -25,7 +25,7 @@
 
 * 🌐 **[Играть в браузере (WebAssembly)](https://glebavershin.github.io/mosaic-pier/)** — Мгновенный запуск без установки.
 * 🍏 **[Скачать Unity-плеер для macOS (v1.1.1)](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.1)** — Универсальная сборка.
-* 🎥 **[Видео игрового процесса](docs/evidence/playthrough.mp4)** — Полное прохождение 6 глав сюжета.
+* 🎥 **[Видео игрового процесса (MP4)](https://raw.githubusercontent.com/GlebAvershin/mosaic-pier/main/docs/evidence/playthrough.mp4)** — Полное прохождение 6 глав сюжета.
 * 📑 **[Инженерный отчёт и технологии](docs/TECHNOLOGIES.ru.md)** — Промышленные бенчмарки, C++ санитайзеры и квитанции.
 
 ---
@@ -35,6 +35,12 @@
 **Mosaic Pier** — казуальная головоломка в жанре tile-matching (Match-3). Игрок восстанавливает старинную приморскую оранжерею, очищая покрытые инеем плитки цветного витража за ограниченное число ходов. В сюжетном режиме 6 глав, в режиме мастера — ещё 6 усложнённых заказов.
 
 За расслабляющим казуальным геймплеем стоит высокопроизводительное **ядро на C++17**, общее для WebAssembly и Unity, дополненное **системой балансировки сложности (DDA)**, **пространственным анализатором узких мест (теплокарта фрустрации)** и **сервером Model Context Protocol (MCP)** для левел-дизайнеров.
+
+---
+
+<p align="center">
+  <img src="docs/evidence/playthrough-preview.gif" alt="Mosaic Pier Демонстрация геймплея" width="85%" style="border-radius: 6px;" />
+</p>
 
 ---
 
