@@ -25,7 +25,7 @@
 
 * 🌐 **[Играть в браузере (WebAssembly)](https://glebavershin.github.io/mosaic-pier/)** — Мгновенный запуск без установки.
 * 🍏 **[Скачать Unity-плеер для macOS (v1.1.1)](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.1)** — Универсальная сборка.
-* 🎥 **[Видео игрового процесса (MP4)](docs/evidence/playthrough.mp4)** — Полное прохождение 6 глав сюжета.
+* 🎥 **[Смотреть геймплей в браузере (Плеер)](#-демонстрация-игрового-процесса)** — Полное прохождение 6 глав сюжета и механики витражей.
 * 📑 **[Инженерный отчёт и технологии](docs/TECHNOLOGIES.ru.md)** — Промышленные бенчмарки, C++ санитайзеры и квитанции.
 
 ---
@@ -38,8 +38,13 @@
 
 ---
 
+## 🎥 Демонстрация игрового процесса
+
 <p align="center">
   <img src="docs/evidence/playthrough-preview.gif" alt="Mosaic Pier Демонстрация геймплея" width="85%" style="border-radius: 6px;" />
+</p>
+<p align="center">
+  <sub><i>Замена витражных плиток, очистка замороженных секторов и сборка мозаики зимородка • Исходный файл: <a href="docs/evidence/playthrough.mp4">playthrough.mp4</a></i></sub>
 </p>
 
 ---

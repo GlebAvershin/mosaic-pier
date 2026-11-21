@@ -25,7 +25,7 @@
 
 * 🌐 **[Play in Browser (WebAssembly)](https://glebavershin.github.io/mosaic-pier/)** — Zero-install responsive gameplay.
 * 🍏 **[Download macOS Unity Player (v1.1.1)](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.1)** — Universal native build.
-* 🎥 **[Watch Gameplay Demonstration (MP4)](docs/evidence/playthrough.mp4)** — Full 6-chapter walkthrough video.
+* 🎥 **[Watch Gameplay Video (In-Browser Player)](#-gameplay-preview)** — Full 6-chapter walkthrough and stained-glass mechanics.
 * 📑 **[Engineering & AI Deep Dive](docs/TECHNOLOGIES.md)** — Production benchmarks, C++ sanitizers, and telemetry receipts.
 
 ---
@@ -38,8 +38,13 @@ Behind the relaxed casual exterior lies a production-grade **C++17 core engine**
 
 ---
 
+## 🎥 Gameplay Preview
+
 <p align="center">
   <img src="docs/evidence/playthrough-preview.gif" alt="Mosaic Pier Gameplay Preview" width="85%" style="border-radius: 6px;" />
+</p>
+<p align="center">
+  <sub><i>Stained glass tile swapping, frosted pane restoration & chapter progression • Source video: <a href="docs/evidence/playthrough.mp4">playthrough.mp4</a></i></sub>
 </p>
 
 ---
