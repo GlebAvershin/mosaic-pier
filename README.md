@@ -25,7 +25,7 @@
 
 * 🌐 **[Play in Browser (WebAssembly)](https://glebavershin.github.io/mosaic-pier/)** — Zero-install responsive gameplay.
 * 🍏 **[Download macOS Unity Player (v1.1.1)](https://github.com/GlebAvershin/mosaic-pier/releases/tag/v1.1.1)** — Universal native build.
-* 🎥 **[Watch Gameplay Demonstration (MP4)](https://raw.githubusercontent.com/GlebAvershin/mosaic-pier/main/docs/evidence/playthrough.mp4)** — Full 6-chapter walkthrough video.
+* 🎥 **[Watch Gameplay Demonstration (MP4)](docs/evidence/playthrough.mp4)** — Full 6-chapter walkthrough video.
 * 📑 **[Engineering & AI Deep Dive](docs/TECHNOLOGIES.md)** — Production benchmarks, C++ sanitizers, and telemetry receipts.
 
 ---
