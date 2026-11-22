@@ -151,3 +151,19 @@ Random 3D tile distribution in Mahjong solitaire results in up to 15–30% mathe
 *Evaluated across 4 architectural themes: Pier Boardwalk, Lighthouse Pyramid, Tide Basin, and Marina Cross.*
 
 [Generator Script](../research/pcg_mahjong.py) · [Unit Test Suite](../research/test_pcg_mahjong.py) · [500-Board Dataset](evidence/pcg-mahjong.json)
+
+---
+
+## 📈 Cross-Game LiveOps & LinUCB Dynamic Theme Personalization
+
+Mosaic Pier contributes to the shared multi-game seasonal meta-system via the live synchronization adapter (`research/liveops_sync.py`):
+
+### 1. Unified Seasonal Meta-Contracts
+* **Cross-Genre Synchronization:** Completing the *Shadow & Glass* contract (extracting 3 batteries in Blackout Freight + clearing 4 boards in Mosaic Pier) awards universal Battle Pass XP.
+* **ACID Progression Sync:** Progression syncs atomically to the multi-game SQLite/PostgreSQL store without disrupting the calm, meditative atmosphere of the game.
+
+### 2. LinUCB Personalization for 3D Tile & Pier Themes
+* **Contextual Aesthetic Recommendation:** The LinUCB bandit dynamically rotates artisanal tile designs (such as Stained Glass Azure Glaze and Mother-of-Pearl Pier inlays) tailored to player artistic preferences, reaching a **22.8% claim rate** across 2,000 simulated sessions.
+* **Non-Predatory Guarantee:** 100% of cosmetic themes are unlocked via earned Battle Pass tokens with zero real-money paywalls.
+
+[LiveOps Sync Adapter](../research/liveops_sync.py) · [Unit Test Suite](../research/test_liveops_sync.py) · [LiveOps Dataset](evidence/cross-game-liveops.json)

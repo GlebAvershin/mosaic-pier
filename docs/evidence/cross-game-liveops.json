@@ -1,0 +1,31 @@
+{
+  "study_title": "Cross-Game LiveOps Progression & LinUCB Tileset Personalization",
+  "client_title": "Mosaic Pier",
+  "total_simulated_sessions": 2000,
+  "execution_time_seconds": 0.0,
+  "liveops_metrics": {
+    "active_season": "Northern Expedition \u00b7 Cross-Game Frontier",
+    "contracts_completed": 383,
+    "completion_rate_pct": 19.15,
+    "total_xp_contributed": 344700,
+    "linucb_tile_claim_rate_pct": 29.55
+  },
+  "personalized_cosmetics": [
+    {
+      "arm_id": "mosaic_azure_glaze",
+      "category": "Tile Theme",
+      "rarity": "Rare",
+      "style": "Artistic"
+    },
+    {
+      "arm_id": "mosaic_pearl_pier",
+      "category": "Pier Texture",
+      "rarity": "Epic",
+      "style": "Luminescent"
+    }
+  ],
+  "architectural_integration": [
+    "Progression directly syncs with multi-game SQLite/PostgreSQL cluster.",
+    "100% of rewards are unlocked through gameplay, maintaining calm artistic ambiance without aggressive microtransactions."
+  ]
+}
