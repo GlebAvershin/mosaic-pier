@@ -126,3 +126,28 @@ In `research/churn_calibration.py`, an empirical simulation modeled 10,000 casua
 3. **C++17 Engine Parity:** All generated tile geometries compile directly into C++17 array primitives with zero garbage collection overhead in WebAssembly.
 
 [Churn Calibration Script](../research/churn_calibration.py) · [Simulation Evidence Data](evidence/ai-churn-calibration.json)
+
+---
+
+## 🀄 Reverse-Play Procedural Mahjong Generation (PCG) & Deadlock Elimination
+
+Random 3D tile distribution in Mahjong solitaire results in up to 15–30% mathematically unsolvable configurations, causing player attrition and unfair losses. To eliminate this structural defect, a **Reverse-Play Procedural Generator** (`research/pcg_mahjong.py`) was implemented:
+
+### 1. Reverse-Play (Backward Synthesis) Algorithm
+* **Guaranteed Solvability Invariant:** The generator starts from a fully resolved board and places matching tile pairs strictly on valid extraction boundaries. This mathematically proves that at least one complete solving path exists.
+* **Concurrency Branching Window:** Enforces a target concurrency window of $[3.0, 7.0]$ simultaneous open pairs, preventing both trivial linear play ($B < 2$) and cognitive fatigue ($B > 10$).
+* **Vertical Layer Entropy:** Regulates tile height distribution across layers $Z \in [0, 3]$, preventing towering single-column artifacts.
+
+### 2. Empirical Benchmark (500 Boards Across 4 Archetypes)
+
+| Metric | Measured Value | Verification Method |
+| :--- | :---: | :--- |
+| **Solvability Guarantee Rate** | **100.0%** | Proven by constructive backward synthesis |
+| **Deadlock Occurrence Rate** | **0.0%** | Zero unsolvable configurations across all runs |
+| **Mean Concurrency Branching** | **5.94 pairs** | Centered in optimal engagement flow corridor $[3.0, 7.0]$ |
+| **Mean Layer Entropy** | **0.542** | Balanced 3D elevation profile |
+| **Generation Throughput** | **6,900+ boards / sec** | Sub-millisecond instant procedural generation |
+
+*Evaluated across 4 architectural themes: Pier Boardwalk, Lighthouse Pyramid, Tide Basin, and Marina Cross.*
+
+[Generator Script](../research/pcg_mahjong.py) · [Unit Test Suite](../research/test_pcg_mahjong.py) · [500-Board Dataset](evidence/pcg-mahjong.json)

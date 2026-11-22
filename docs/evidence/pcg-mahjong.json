@@ -1,0 +1,286 @@
+{
+  "study_name": "Reverse-Play Procedural Mahjong Level Generation (PCG)",
+  "generator_architecture": "Constraint-Driven Inverse Pairing with Branching Factor Optimization",
+  "summary_metrics": {
+    "total_boards_generated": 500,
+    "total_attempts": 500,
+    "solvability_guarantee_pct": 100.0,
+    "deadlock_prevention_rate_pct": 100.0,
+    "generation_time_seconds": 0.072,
+    "throughput_boards_per_sec": 6946.8,
+    "mean_concurrency_branching": 5.94,
+    "mean_layer_entropy": 0.542
+  },
+  "layout_breakdown": {
+    "Pier Boardwalk": {
+      "count": 125,
+      "mean_branching": 5.57
+    },
+    "Lighthouse Pyramid": {
+      "count": 125,
+      "mean_branching": 6.59
+    },
+    "Tide Basin": {
+      "count": 125,
+      "mean_branching": 5.33
+    },
+    "Marina Cross": {
+      "count": 125,
+      "mean_branching": 6.25
+    }
+  },
+  "sample_boards": [
+    {
+      "layout_name": "Pier Boardwalk",
+      "total_tiles": 48,
+      "total_pairs": 24,
+      "solvability_status": "GUARANTEED_100_PCT_SOLVABLE",
+      "mean_branching_factor": 4.46,
+      "layer_entropy_index": 0.611,
+      "max_layer_depth": 2,
+      "sample_tile_pairs": [
+        {
+          "suit": "Bamboo_1",
+          "coord_a": [
+            2,
+            2,
+            1
+          ],
+          "coord_b": [
+            5,
+            3,
+            0
+          ]
+        },
+        {
+          "suit": "Characters_2",
+          "coord_a": [
+            6,
+            0,
+            0
+          ],
+          "coord_b": [
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "suit": "Dots_3",
+          "coord_a": [
+            2,
+            1,
+            1
+          ],
+          "coord_b": [
+            7,
+            3,
+            0
+          ]
+        },
+        {
+          "suit": "Winds_4",
+          "coord_a": [
+            3,
+            1,
+            1
+          ],
+          "coord_b": [
+            0,
+            2,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "layout_name": "Pier Boardwalk",
+      "total_tiles": 48,
+      "total_pairs": 24,
+      "solvability_status": "GUARANTEED_100_PCT_SOLVABLE",
+      "mean_branching_factor": 5.75,
+      "layer_entropy_index": 0.611,
+      "max_layer_depth": 2,
+      "sample_tile_pairs": [
+        {
+          "suit": "Bamboo_1",
+          "coord_a": [
+            9,
+            1,
+            1
+          ],
+          "coord_b": [
+            7,
+            1,
+            2
+          ]
+        },
+        {
+          "suit": "Characters_2",
+          "coord_a": [
+            9,
+            0,
+            0
+          ],
+          "coord_b": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "suit": "Dots_3",
+          "coord_a": [
+            0,
+            0,
+            0
+          ],
+          "coord_b": [
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "suit": "Winds_4",
+          "coord_a": [
+            1,
+            2,
+            0
+          ],
+          "coord_b": [
+            7,
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "layout_name": "Pier Boardwalk",
+      "total_tiles": 48,
+      "total_pairs": 24,
+      "solvability_status": "GUARANTEED_100_PCT_SOLVABLE",
+      "mean_branching_factor": 5.62,
+      "layer_entropy_index": 0.611,
+      "max_layer_depth": 2,
+      "sample_tile_pairs": [
+        {
+          "suit": "Bamboo_1",
+          "coord_a": [
+            8,
+            3,
+            0
+          ],
+          "coord_b": [
+            11,
+            1,
+            0
+          ]
+        },
+        {
+          "suit": "Characters_2",
+          "coord_a": [
+            2,
+            3,
+            0
+          ],
+          "coord_b": [
+            2,
+            2,
+            1
+          ]
+        },
+        {
+          "suit": "Dots_3",
+          "coord_a": [
+            0,
+            0,
+            0
+          ],
+          "coord_b": [
+            10,
+            2,
+            0
+          ]
+        },
+        {
+          "suit": "Winds_4",
+          "coord_a": [
+            9,
+            1,
+            1
+          ],
+          "coord_b": [
+            2,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "layout_name": "Pier Boardwalk",
+      "total_tiles": 48,
+      "total_pairs": 24,
+      "solvability_status": "GUARANTEED_100_PCT_SOLVABLE",
+      "mean_branching_factor": 5.62,
+      "layer_entropy_index": 0.611,
+      "max_layer_depth": 2,
+      "sample_tile_pairs": [
+        {
+          "suit": "Bamboo_1",
+          "coord_a": [
+            7,
+            1,
+            2
+          ],
+          "coord_b": [
+            4,
+            2,
+            2
+          ]
+        },
+        {
+          "suit": "Characters_2",
+          "coord_a": [
+            4,
+            1,
+            2
+          ],
+          "coord_b": [
+            11,
+            3,
+            0
+          ]
+        },
+        {
+          "suit": "Dots_3",
+          "coord_a": [
+            11,
+            1,
+            0
+          ],
+          "coord_b": [
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "suit": "Winds_4",
+          "coord_a": [
+            9,
+            0,
+            0
+          ],
+          "coord_b": [
+            2,
+            2,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}
